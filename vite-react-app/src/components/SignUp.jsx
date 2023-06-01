@@ -17,10 +17,6 @@ export default function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("name",name.value )
-    console.log("lastname", lastName.value)
-  
-
     axios
       .post(
         `${axiosURL}/api/users/signup`,
@@ -33,14 +29,16 @@ export default function SignUp() {
         },
         { withCredentials: true }
       )
-      
-      .then(() => navigate("/home")) // pendiente:crear ruta p/el navigate
-      .cath((error) => console.log(error));
+      .then((res) => navigate("/")) // pendiente:crear ruta p/el navigate
+      .catch((error) => console.log(error));
   };
 
   return (
     <div className="container-fluid p-3" style={{ background: "#2B2D42" }}>
-      <Card className="container-fluid p-3 card-form" style={{ width: "50rem" }}>
+      <Card
+        className="container-fluid p-3 card-form"
+        style={{ width: "50rem" }}
+      >
         <Form className="container" onSubmit={handleSubmit}>
           <div className="row">
             <Form.Group className="mb-3 p-2 col-6" controlId="formBasicEmail">
@@ -65,7 +63,7 @@ export default function SignUp() {
                 placeholder="lastName"
               />
             </Form.Group>
-          <Form.Group className="mb-3 p-2" controlId="formBasicEmail">
+            <Form.Group className="mb-3 p-2" controlId="formBasicEmail">
               <Form.Label>email</Form.Label>
               <Form.Control
                 required
@@ -102,4 +100,4 @@ export default function SignUp() {
       </Card>
     </div>
   );
-  }  
+}
