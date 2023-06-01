@@ -24,7 +24,9 @@ function Login() {
         },
         { withCredentials: true }
       )
-      .then((res) => navigate("/"))
+      .then((res) => {
+        navigate("/");
+      })
       .catch((error) => console.log(error));
   };
 
@@ -50,13 +52,15 @@ function Login() {
               placeholder="Password"
             />
           </Form.Group>
-        </Form>
 
-        <Card.Body>
-          <Button variant="outline-info">Login</Button>
-          <p>¿No tienes cuenta?</p>
-          <Card.Link href="#">Registrate aqui</Card.Link>
-        </Card.Body>
+          <Card.Body>
+            <Button type="submit" variant="outline-info">
+              Login
+            </Button>
+            <p>¿No tienes cuenta?</p>
+            <Card.Link href="#">Registrate aqui</Card.Link>
+          </Card.Body>
+        </Form>
       </Card>
     </div>
   );
