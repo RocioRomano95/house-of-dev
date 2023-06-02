@@ -40,12 +40,14 @@ function Login() {
   return (
     <div className="container-fluid login" style={{ height: "100vh" }}>
       <div className="col1" style={{ height: "100%", width: "40%" }}></div>
-      <div className="card-float" style={{ width: "20em" }}>
-        <Card className="container-fluid" style={{ borderRadius: 0 }}>
-          <div className="row p-2" style={{ background: "#fe4236" }}>
-            <Card.Img variant="top" src="LogoHOV.png" />
-          </div>
-          <div className="row">
+      <div className="card-float container-fluid" style={{ width: "20em" }}>
+        <Card className="row p-2" style={{ borderRadius: 0 }}>
+          <Card.Img
+            style={{ background: "#fe4236", borderRadius: 0 }}
+            variant="top"
+            src="LogoHOV.png"
+          />
+          <Card.Body style={{ background: "#ffffff" }}>
             <Form onSubmit={handleSubmit}>
               <Form.Group
                 className="mb-3"
@@ -56,6 +58,7 @@ function Login() {
                   {...email}
                   type="email"
                   placeholder="Email"
+                  style={{ borderRadius: "25px" }}
                 />
               </Form.Group>
 
@@ -68,18 +71,22 @@ function Login() {
                   {...password}
                   type="password"
                   placeholder="Password"
+                  style={{ borderRadius: "25px" }}
                 />
               </Form.Group>
 
-              <Card.Body>
-                <Button type="submit" variant="outline-info">
-                  Login
-                </Button>
-                <p>¿No tienes cuenta?</p>
-                <Card.Link href="#">Registrate aqui</Card.Link>
-              </Card.Body>
+              <Button
+                style={{ borderRadius: "25px" }}
+                type="submit"
+                variant="outline-info"
+              >
+                Login
+              </Button>
+
+              <p>¿No tienes cuenta?</p>
+              <Card.Link href="#">Registrate aqui</Card.Link>
             </Form>
-          </div>
+          </Card.Body>
         </Card>
       </div>
 
