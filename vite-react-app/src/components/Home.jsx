@@ -3,7 +3,7 @@ import NavBar from "./Navbar/NavBar";
 import { Navbar } from "react-bootstrap";
 
 function Home() {
-  return <></>;
+  return <><NavBar/></>;
 }
 
 export default Home;
