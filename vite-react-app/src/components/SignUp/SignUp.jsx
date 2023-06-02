@@ -6,7 +6,7 @@ import { useNavigate } from "react-router";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import "../signup/index.css";
+import "./index.css";
 
 export default function SignUp() {
   const name = useInput();
