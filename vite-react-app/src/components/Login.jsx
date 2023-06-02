@@ -31,38 +31,31 @@ function Login() {
   };
 
   return (
-    <div>
-      <Card style={{ width: "20rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Control
-              required
-              {...email}
-              type="email"
-              placeholder="Email"
-            />
-          </Form.Group>
+    <Card style={{ width: "20rem" }}>
+      <Card.Img variant="top" src="holder.js/100px180" />
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Control required {...email} type="email" placeholder="Email" />
+        </Form.Group>
 
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Control
-              required
-              {...password}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Control
+            required
+            {...password}
+            type="password"
+            placeholder="Password"
+          />
+        </Form.Group>
 
-          <Card.Body>
-            <Button type="submit" variant="outline-info">
-              Login
-            </Button>
-            <p>¿No tienes cuenta?</p>
-            <Card.Link href="#">Registrate aqui</Card.Link>
-          </Card.Body>
-        </Form>
-      </Card>
-    </div>
+        <Card.Body>
+          <Button type="submit" variant="outline-info">
+            Login
+          </Button>
+          <p>¿No tienes cuenta?</p>
+          <Card.Link href="#">Registrate aqui</Card.Link>
+        </Card.Body>
+      </Form>
+    </Card>
   );
 }
 
