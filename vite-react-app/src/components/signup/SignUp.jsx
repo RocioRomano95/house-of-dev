@@ -48,6 +48,7 @@ export default function SignUp() {
                 {...name}
                 type="text"
                 placeholder="Nombre"
+                style={{ borderRadius: "25px" }}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -56,6 +57,7 @@ export default function SignUp() {
                 {...lastName}
                 type="text"
                 placeholder="Apellido"
+                style={{ borderRadius: "25px" }}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -64,6 +66,7 @@ export default function SignUp() {
                 {...email}
                 type="text"
                 placeholder="Email"
+                style={{ borderRadius: "25px" }}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -72,6 +75,7 @@ export default function SignUp() {
                 {...password}
                 type="password"
                 placeholder="Password"
+                style={{ borderRadius: "25px" }}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -80,10 +84,16 @@ export default function SignUp() {
                 {...phone}
                 type="text"
                 placeholder="Celular"
+                style={{ borderRadius: "25px" }}
               />
             </Form.Group>
             <div className="col-12">
-              <Button variant="outline-info" size="lg" type="submit">
+              <Button
+                variant="outline-info"
+                size="lg"
+                type="submit"
+                style={{ borderRadius: "25px" }}
+              >
                 Sing up
               </Button>
             </div>

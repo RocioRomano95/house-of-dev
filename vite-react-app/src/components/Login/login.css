@@ -1,0 +1,36 @@
+/* .login {
+  background: #fe4236;
+  margin: 20px;
+  padding: 20px;
+  /* position: relative; */
+
+/*
+.image {
+  background-image: url("/vite-react-app/Maskgroup.png");
+  position: absolute;
+  width: 846px;
+  height: 1024px;
+  left: 594px;
+  top: 0px;
+}*/
+
+/* .card-login {
+  background-color: #ffff;
+  border-radius: 0;
+} */
+.login {
+  display: flex;
+  flex-direction: row;
+}
+.col1 {
+  background: #fe4236;
+}
+.col3 {
+  background: #fe4236;
+}
+.card-float {
+  position: absolute;
+  background: yellow;
+  top: 40%;
+  left: 30%;
+}
