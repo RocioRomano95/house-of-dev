@@ -35,75 +35,95 @@ export default function SignUp() {
   };
 
   return (
-    <div className="container-fluid signup" style={{ height: "100vh" }}>
+    <div className="signup" style={{ height: "100vh", width: "100%" }}>
       <div className="col1" style={{ height: "100%", width: "40%" }}></div>
-      <div className="card-float" style={{ width: "20em" }}>
-        {" "}
-        <Card style={{ borderRadius: 0 }}>
-          <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control
-                required
-                {...name}
-                type="text"
-                placeholder="Nombre"
-                style={{ borderRadius: "25px" }}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control
-                required
-                {...lastName}
-                type="text"
-                placeholder="Apellido"
-                style={{ borderRadius: "25px" }}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control
-                required
-                {...email}
-                type="text"
-                placeholder="Email"
-                style={{ borderRadius: "25px" }}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control
-                required
-                {...password}
-                type="password"
-                placeholder="Password"
-                style={{ borderRadius: "25px" }}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control
-                required
-                {...phone}
-                type="text"
-                placeholder="Celular"
-                style={{ borderRadius: "25px" }}
-              />
-            </Form.Group>
-            <div className="col-12">
-              <Button
-                variant="outline-info"
-                size="lg"
-                type="submit"
-                style={{ borderRadius: "25px" }}
+      <div className="card-float" style={{ width: "15em" }}>
+        <Card className="row p-2" style={{ borderRadius: 0 }}>
+          <Card.Img
+            style={{ background: "#fe4236", borderRadius: 0 }}
+            variant="top"
+            src="LogoHOV.png"
+          />
+          <Card.Body style={{ background: "#ffffff" }}>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
               >
-                Sing up
-              </Button>
-            </div>
-          </Form>
+                <Form.Control
+                  required
+                  {...name}
+                  type="text"
+                  placeholder="Nombre"
+                  style={{ borderRadius: "25px" }}
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Control
+                  required
+                  {...lastName}
+                  type="text"
+                  placeholder="Apellido"
+                  style={{ borderRadius: "25px" }}
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Control
+                  required
+                  {...email}
+                  type="text"
+                  placeholder="Email"
+                  style={{ borderRadius: "25px" }}
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Control
+                  required
+                  {...password}
+                  type="password"
+                  placeholder="Password"
+                  style={{ borderRadius: "25px" }}
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Control
+                  required
+                  {...phone}
+                  type="text"
+                  placeholder="Celular"
+                  style={{ borderRadius: "25px" }}
+                />
+              </Form.Group>
+              <div className="col-12">
+                <Button
+                  variant="outline-info"
+                  size="lg"
+                  type="submit"
+                  style={{ borderRadius: "25px" }}
+                >
+                  Sing up
+                </Button>
+              </div>
+            </Form>
+          </Card.Body>
         </Card>
       </div>
       <div className="col3" style={{ height: "100%", width: "60%" }}>
         <img
           style={{ height: "100%", width: "100%" }}
-          src="house.png"
+          src="Maskgroup.png"
           alt="House"
         />
       </div>

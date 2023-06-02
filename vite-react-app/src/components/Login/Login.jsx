@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import "../Login/login.css";
+import { Link } from "react-router-dom";
 
 function Login() {
   const email = useInput();
@@ -38,7 +39,7 @@ function Login() {
       </div> */
 
   return (
-    <div className="container-fluid login" style={{ height: "100vh" }}>
+    <div className="login" style={{ height: "100vh", width: "100%" }}>
       <div className="col1" style={{ height: "100%", width: "40%" }}></div>
       <div className="card-float container-fluid" style={{ width: "20em" }}>
         <Card className="row p-2" style={{ borderRadius: 0 }}>
@@ -84,7 +85,9 @@ function Login() {
               </Button>
 
               <p>¿No tienes cuenta?</p>
-              <Card.Link href="#">Registrate aqui</Card.Link>
+              <Link to="/signup">
+                <Card.Link href="#">Registrate aqui</Card.Link>
+              </Link>
             </Form>
           </Card.Body>
         </Card>
