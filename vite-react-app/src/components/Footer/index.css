@@ -1,0 +1,13 @@
+
+.footer {
+  margin-top: auto;
+  padding: 20px;
+  background-color: #FE4236;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.list-inline-spaced .list-inline-item:not(:last-child) {
+  margin-right: 80px;
+}
