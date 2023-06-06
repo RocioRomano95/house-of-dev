@@ -3,10 +3,13 @@
   background-color: #FE4236;
  
 }
-
-.navbar-brand {
-  font-weight: bold;
-  color: #333;
+.custom-svg-container {
+  margin: 30px;
+  padding: 20px;
+  }
+.custom-input {
+border-color: white;
+;
 }
 
 .nav-link {
@@ -26,25 +29,25 @@
   margin-right: 10px;
 } 
 
-@media (max-width: 576px) {
-  .navbar-nav {
-    margin-top: 10px;
-  }
+
+.btn-login {
+  background-color:  #FE4236;
+  border-color:  #FE4236;
+  color: white;
+  margin-right: 80px;
+  
 }
 
 .btn-login {
-  background-color: red;
-  border-color: red;
+  background-color:  #FE4236;
+  border-color:  white;
   color: white;
 }
-
-.btn-login:hover {
-  background-color: darkred;
-  border-color: darkred;
-  color: white;
+.custom-navbar {
+  background-color:  #FE4236;
+  height: 80px;
 }
 
-
-
-
-
+.navbar-link a {
+color:white
+}
