@@ -4,9 +4,9 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function Footer() {
   return (
-    
-    <footer>
-      <Container className="container">
+
+    <footer className="footer">
+      <Container >
         <Row className="d-flex justify-content-between">
           <Col md={6}>
             <svg
@@ -30,7 +30,7 @@ function Footer() {
             </svg>
           </Col>
           <Col md={6}>
-            <ul className="list-inline text-md-right">
+            <ul className="list-inline list-inline-spaced text-md-right">
               <li className="list-inline-item">
                 <a href="#">Nosotros</a>
               </li>

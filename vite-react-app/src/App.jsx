@@ -2,7 +2,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import SignUp from "./components/SignUp/SignUp";
 import Home from "./components/Home";
-import Login from "./components/Login";
+import Login from "./components/Login/Login";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <Route path="/login" element={<Login />} />
    
     </Routes>
-    <Footer/>
+   <Footer/>
     </>
   );
 }
