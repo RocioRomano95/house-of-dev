@@ -1,12 +1,9 @@
-// import configureStore from "@reduxjs/toolkit";
-
-/* 
-function reducer(state, action) {
-  return state;
-}
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer from "./user";
 
 const store = configureStore({
-  reducer,
+  reducer: {
+    user: userReducer, //El objeto de mi estado
+  },
 });
 export default store;
- */

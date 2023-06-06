@@ -4,21 +4,31 @@ import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { axiosURL } from "../../settings/url";
+import { useDispatch, useSelector } from "react-redux";
+import { setLogOut } from "../../state/user";
 
 function NavBar() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user); //con este hook puedo traer la informacion del usuario
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 
   const handleSearchClick = () => {
     setIsSearchExpanded(!isSearchExpanded);
   };
-  // const handleLogout = () => {
-  //   axios
-  //     .get(`${axiosURL}/api/users/logout`, { withCredentials: true })
-  //     .then((res) => navigate("/login"))
-  //     .catch((error) => console.log(error));
-  // };
+  const handleLogout = (e) => {
+    e.preventDefault();
+    axios
+      .get(`${axiosURL}/api/users/logout`, { withCredentials: true })
+      .then((res) => {
+        console.log("LOGOUT", res.data);
+        dispatch(setLogOut({}));
+        navigate("/");
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div style={{ height: "120px", width: "100vw" }}>
@@ -73,23 +83,31 @@ function NavBar() {
               Mi perfil
             </Nav.Link>
           </Nav>
-          <Form inline className="ml-auto">
-            <Link to="/login">
-              <Button variant="outline-Info rounded-pill" className="btn-login">
-                Iniciar sesión
-              </Button>
-            </Link>
-
-            {/* <Link to="/logout">
-              <Button
-                onClick={handleLogout}
-                variant="outline-Info rounded-pill"
-                className="btn-login"
-              >
-                Log out
-              </Button>
-            </Link> */}
-          </Form>
+          {user.email ? (
+            <Form inline className="ml-auto">
+              <Link to="/logout">
+                <Button
+                  variant="outline-Info rounded-pill"
+                  className="btn-logout"
+                  onClick={handleLogout}
+                >
+                  Cerrar sesión
+                </Button>
+              </Link>
+            </Form>
+          ) : (
+            <Form inline className="ml-auto">
+              <h3> {user.name}</h3>
+              <Link to="/login">
+                <Button
+                  variant="outline-Info rounded-pill"
+                  className="btn-login"
+                >
+                  Iniciar sesión
+                </Button>
+              </Link>
+            </Form>
+          )}
         </Navbar.Collapse>
       </Navbar>
     </div>

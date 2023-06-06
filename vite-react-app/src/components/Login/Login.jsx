@@ -8,11 +8,14 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import "../Login/login.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLogin } from "../../state/user";
 
 function Login() {
   const email = useInput();
   const password = useInput();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,18 +29,12 @@ function Login() {
         },
         { withCredentials: true }
       )
-      .then((res) => {
+      .then((user) => {
+        dispatch(setLogin(user.data));
         navigate("/");
       })
       .catch((error) => console.log(error));
   };
-  /*{/* <div className="color-padre">
-        <div className="color1"></div>
-        <div className="color3"></div>
-
-        <div className="color2"></div>
-      </div> */
-
   return (
     <div className="login" style={{ height: "100vh", width: "100%" }}>
       <div className="col1" style={{ height: "100%", width: "40%" }}></div>
