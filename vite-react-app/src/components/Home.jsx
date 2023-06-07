@@ -1,9 +1,14 @@
 import React from "react";
 import NavBar from "./Navbar/NavBar";
-import { Navbar } from "react-bootstrap";
+import Cards from "./Cards/Cards";
 
 function Home() {
-  return <><NavBar/></>;
+  return (
+    <>
+      <NavBar />
+      <Cards />
+    </>
+  );
 }
 
 export default Home;
