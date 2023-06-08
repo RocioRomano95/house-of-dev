@@ -4,7 +4,6 @@ import SignUp from "./components/SignUp/SignUp";
 import Home from "./components/Home";
 import Login from "./components/Login/Login";
 import Footer from "./components/Footer/Footer";
-import PropertyDetail from "./components/PropertyDetail";
 import axios from "axios";
 import { axiosURL } from "./settings/url";
 import { useDispatch } from "react-redux";

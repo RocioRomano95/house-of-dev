@@ -10,23 +10,20 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import "./index.css";
-import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
 
 function Cards() {
   // const dispatch = useDispatch();
   // const properties = useSelector((state) => state.properties);
   const [properties, setProperties] = useState([]);
   const user = useSelector((state) => state.user);
-  const { id } = useParams();
   console.log("properties=>", properties);
 
-  const handleDelete = () => {
+  const handleDelete = (id) => {
     axios
       .delete(`${axiosURL}/api/admin/delete-property/${id}`)
       .then(() => {
-        setDeletedUser(user.id);
+        console.log("propiedad eliminada");
       })
       .catch((error) => {
         console.log(error);
@@ -61,7 +58,9 @@ function Cards() {
                     </Col>
                     <Col md={5}>
                       <Button
-                        onClick={handleDelete}
+                        onClick={() => {
+                          handleDelete(house.id);
+                        }}
                         style={{ borderRadius: "25px" }}
                       >
                         Eliminar
