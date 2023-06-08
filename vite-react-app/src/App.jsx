@@ -9,7 +9,7 @@ import { axiosURL } from "./settings/url";
 import { useDispatch } from "react-redux";
 import { setLogin } from "./state/user";
 import { useEffect } from "react";
-
+import PropertyDetail from "./components/Properties/PropertyDetail";
 
 function App() {
   const dispatch = useDispatch();
