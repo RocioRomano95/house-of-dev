@@ -3,10 +3,12 @@ import { axiosURL } from "../../settings/url";
 import { useEffect, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import getAllProperties from "../../state/properties";
+import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
 import "./index.css";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -99,8 +101,25 @@ function Cards() {
                 </Row>
 
                 <Row>
-                  <Col className="border border-info p-3">
-                    <Card.Text>ver mas y favoritos</Card.Text>
+                  <Col className="border border-info p-3 d-flex justify-content-end">
+                    <Button
+                      variant="outline-info "
+                      size="sm"
+                      type="submit"
+                      style={{ borderRadius: "40px" }}
+                    >
+                      Fa
+                    </Button>
+                    <Link to={"/property/:id"}>
+                      <Button
+                        variant="outline-info"
+                        size="md"
+                        type="submit"
+                        style={{ borderRadius: "25px" }}
+                      >
+                        ver más
+                      </Button>
+                    </Link>
                   </Col>
                 </Row>
               </Col>
