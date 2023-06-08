@@ -74,7 +74,7 @@ function Cards() {
                     >
                       Fa
                     </Button>
-                    <Link to={"/property/:id"}>
+                    <Link to={`/property/${house.id}`}>
                       <Button
                         variant="outline-info"
                         size="md"
