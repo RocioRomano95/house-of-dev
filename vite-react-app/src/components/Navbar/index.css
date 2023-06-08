@@ -1,24 +1,21 @@
-
- .navbar {
-  background-color: #FE4236;
- 
+.navbar {
+  background-color: #fe4236;
 }
 .custom-svg-container {
   margin: 30px;
   padding: 20px;
-  }
+}
 .custom-input {
-border-color: white;
-;
+  border-color: white;
 }
 
 .nav-link {
-  color:#F7F3EE;
+  color: #f7f3ee;
   margin-right: 10px;
 }
 
 .nav-link:hover {
-  color:#F7F3EE;
+  color: #f7f3ee;
 }
 
 .form-control {
@@ -27,27 +24,30 @@ border-color: white;
 
 .btn {
   margin-right: 10px;
-} 
-
-
-.btn-login {
-  background-color:  #FE4236;
-  border-color:  #FE4236;
-  color: white;
-  margin-right: 80px;
-  
 }
 
 .btn-login {
-  background-color:  #FE4236;
-  border-color:  white;
+  background-color: #fe4236;
+  border-color: #fe4236;
+  color: white;
+  margin-right: 80px;
+}
+
+.btn-login {
+  background-color: #fe4236;
+  border-color: white;
   color: white;
 }
 .custom-navbar {
-  background-color:  #FE4236;
+  background-color: #fe4236;
   height: 80px;
 }
 
 .navbar-link a {
-color:white
+  color: white;
+}
+
+.navbar-admin {
+  background-color: #123ac8;
+  height: 80px;
 }

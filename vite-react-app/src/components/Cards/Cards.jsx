@@ -8,11 +8,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import "./index.css";
+import { Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 function Cards() {
   // const dispatch = useDispatch();
   // const properties = useSelector((state) => state.properties);
   const [properties, setProperties] = useState([]);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     axios
@@ -32,7 +35,21 @@ function Cards() {
           <Card style={{ width: "50%" }}>
             <Row>
               <Col md={4}>
-                <Card.Img src={house.image} />
+                <Row>
+                  <Card.Img src={house.image} />
+                </Row>
+                {user.is_admin ? (
+                  <Row>
+                    <Col md={5}>
+                      <Button style={{ borderRadius: "25px" }}>Editar</Button>
+                    </Col>
+                    <Col md={5}>
+                      <Button style={{ borderRadius: "25px" }}>Eliminar</Button>
+                    </Col>
+                  </Row>
+                ) : (
+                  <></>
+                )}
               </Col>
 
               <Col md={8}>
