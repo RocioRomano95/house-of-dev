@@ -10,12 +10,26 @@ import Container from "react-bootstrap/Container";
 import "./index.css";
 import { Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router";
 
 function Cards() {
   // const dispatch = useDispatch();
   // const properties = useSelector((state) => state.properties);
   const [properties, setProperties] = useState([]);
   const user = useSelector((state) => state.user);
+  const { id } = useParams();
+  console.log("properties=>", properties);
+
+  const handleDelete = () => {
+    axios
+      .delete(`${axiosURL}/api/admin/delete-property/${id}`)
+      .then(() => {
+        setDeletedUser(user.id);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -44,7 +58,12 @@ function Cards() {
                       <Button style={{ borderRadius: "25px" }}>Editar</Button>
                     </Col>
                     <Col md={5}>
-                      <Button style={{ borderRadius: "25px" }}>Eliminar</Button>
+                      <Button
+                        onClick={handleDelete}
+                        style={{ borderRadius: "25px" }}
+                      >
+                        Eliminar
+                      </Button>
                     </Col>
                   </Row>
                 ) : (
