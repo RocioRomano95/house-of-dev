@@ -4,6 +4,7 @@ import SignUp from "./components/SignUp/SignUp";
 import Home from "./components/Home";
 import Login from "./components/Login/Login";
 import Footer from "./components/Footer/Footer";
+import PropertyDetail from "./components/PropertyDetail";
 import axios from "axios";
 import { axiosURL } from "./settings/url";
 import { useDispatch } from "react-redux";
@@ -23,12 +24,13 @@ function App() {
 
   return (
     <>
-    <Routes>
-       <Route path="/" element={<Home/>} />
-      <Route path="/signup" element={<SignUp />} />
-      <Route path="/login" element={<Login />} />
-    </Routes>
-   <Footer/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/property/:id" element={<PropertyDetail />} />
+      </Routes>
+      <Footer />
     </>
   );
 }
