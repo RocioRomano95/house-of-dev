@@ -29,13 +29,14 @@ const PropertyDetail = () => {
         <Card.Title>Title</Card.Title>
         <ListGroup variant="flush">
           <ListGroup.Item>{property.description}</ListGroup.Item>
-          <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-          <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-          <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-          <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-          <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-          <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-          <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+          <ListGroup.Item>{property.address}</ListGroup.Item>
+          <ListGroup.Item>{property.price}</ListGroup.Item>
+          <ListGroup.Item>{property.locality}</ListGroup.Item>
+          <ListGroup.Item>{property.bedrooms}</ListGroup.Item>
+          <ListGroup.Item>{property.baths}</ListGroup.Item>
+          <ListGroup.Item>{property.square_meters}</ListGroup.Item>
+          <ListGroup.Item>{property.post_date}</ListGroup.Item>
+          <ListGroup.Item>{property.state}</ListGroup.Item>
         </ListGroup>
       </Card>
     </>
