@@ -70,7 +70,25 @@ function NavBar() {
                   Cerrar sesión
                 </Button>
               </Link>
+              {/*   <h4>{user.name}</h4> */}
             </Form>
+
+          ) : (
+            <Form inline className="ml-auto">
+              <Link to="/login">
+                <Button
+                  variant="outline-Info rounded-pill"
+                  className="btn-login"
+                  type="submit"
+                >
+                  Iniciar sesión
+                </Button>
+              </Link>
+            </Form>
+          )}
+        </Navbar.Collapse>
+      </Navbar>
+
           </Navbar.Collapse>
         </Navbar>
       ) : (
@@ -135,6 +153,7 @@ function NavBar() {
           </Navbar.Collapse>
         </Navbar>
       )}
+
     </div>
   );
 }
