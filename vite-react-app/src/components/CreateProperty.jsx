@@ -25,7 +25,8 @@ function CreateProperty() {
 
   const navigate = useNavigate();
 
-  const handleCreate = () => {
+  const handleCreate = (e) => {
+    e.preventDefault();
     axios
       .post(`${axiosURL}/api/admin/create`, {
         description: description.value,
@@ -40,6 +41,7 @@ function CreateProperty() {
         state: state.value,
       })
       .then(() => {
+        console.log("llegooo");
         navigate("/");
       })
       .catch((error) => console.log(error));
