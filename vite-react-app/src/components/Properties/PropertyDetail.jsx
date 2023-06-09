@@ -4,6 +4,14 @@ import { useEffect, useState } from "react";
 import { axiosURL } from "../../settings/url";
 import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import NavBar from "../Navbar/NavBar.jsx";
+import Container from "react-bootstrap/Container";
+import "./index.css";
+
+import { HiOutlineMapPin } from "react-icons/hi2";
+
 
 const PropertyDetail = () => {
   const [property, setProperty] = useState({});
@@ -26,22 +34,26 @@ const PropertyDetail = () => {
   }, []);
 
   return (
-    <>
-      <Card style={{ width: "18rem" }}>
-        <Card.Title>Title</Card.Title>
-        <ListGroup variant="flush">
-          <ListGroup.Item>{property.description}</ListGroup.Item>
-          <ListGroup.Item>{property.address}</ListGroup.Item>
-          <ListGroup.Item>{property.price}</ListGroup.Item>
-          <ListGroup.Item>{property.locality}</ListGroup.Item>
-          <ListGroup.Item>{property.bedrooms}</ListGroup.Item>
-          <ListGroup.Item>{property.baths}</ListGroup.Item>
-          <ListGroup.Item>{property.square_meters}</ListGroup.Item>
-          <ListGroup.Item>{property.post_date}</ListGroup.Item>
-          <ListGroup.Item>{property.state}</ListGroup.Item>
-        </ListGroup>
-      </Card>
-    </>
+    <div className="container d-flex flex-column min-vh-100">
+      <NavBar className="h-100" />
+
+      <Container>
+      <Row>
+        <Col sm={8}><Card.Img variant="top" src={property.image} /></Col>
+        <Col sm={4}>  <ListGroup variant="flush" >
+           <ListGroup.Item > <span style={{ fontWeight: 'bold' }}>$ </span>{property.price}</ListGroup.Item>
+            <ListGroup.Item> <span style={{ fontWeight: 'bold' }}>Descripción: </span>{property.description}</ListGroup.Item>
+            <ListGroup.Item> <span style={{ fontWeight: 'bold' }}>Dirección: </span>{property.address}</ListGroup.Item>
+            <ListGroup.Item> <span style={{ fontWeight: 'bold' }}>Localidad: </span>{property.locality}</ListGroup.Item>
+            <ListGroup.Item> <span style={{ fontWeight: 'bold' }}>Habitaciones: </span>{property.bedrooms}</ListGroup.Item>
+            <ListGroup.Item> <span style={{ fontWeight: 'bold' }}>Baños: </span> {property.baths}</ListGroup.Item>
+            <ListGroup.Item> <span style={{ fontWeight: 'bold' }}>M²:</span> {property.square_meters}</ListGroup.Item>
+            <ListGroup.Item> <span style={{ fontWeight: 'bold' }}>Publicado:</span> {property.post_date}</ListGroup.Item>
+            <ListGroup.Item> <span style={{ fontWeight: 'bold' }}>Estado: </span> {property.state}</ListGroup.Item>
+          </ListGroup> </Col>
+      </Row>
+      </Container>
+    </div>
   );
 };
 

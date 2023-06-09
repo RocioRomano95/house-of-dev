@@ -1,10 +1,11 @@
 import React from "react";
-import "./index.css";
 import { Container, Row, Col } from "react-bootstrap";
+import "./index.css";
+
 
 function Footer() {
+  
   return (
-
     <footer className="footer">
       <Container >
         <Row className="d-flex justify-content-between">
