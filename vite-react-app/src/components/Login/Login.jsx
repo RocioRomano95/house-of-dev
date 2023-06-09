@@ -8,14 +8,16 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import "../Login/login.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "../../state/user";
+import Swal from "sweetalert2";
 
 function Login() {
   const email = useInput();
   const password = useInput();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // const user = useSelector((state) => state.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,10 +32,21 @@ function Login() {
         { withCredentials: true }
       )
       .then((user) => {
+        Swal.fire({
+          icon: "success",
+          title: `BIenvenido`,
+        });
         dispatch(setLogin(user.data));
         navigate("/");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        Swal.fire({
+          text: "Usuario o contraseña incorrecta",
+          icon: "error",
+          confirmButtonText: "Aceptar",
+        });
+        console.log(error);
+      });
   };
   return (
     <div className="login" style={{ height: "100vh", width: "100%" }}>

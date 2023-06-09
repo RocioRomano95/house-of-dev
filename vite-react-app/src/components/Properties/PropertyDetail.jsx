@@ -17,8 +17,6 @@ const PropertyDetail = () => {
   const [property, setProperty] = useState({});
   const { id } = useParams();
 
-  console.log("ID PROPERTY", id);
-
   const fetchProperties = (id) => {
     axios
       .get(`${axiosURL}/api/properties/${id}`)
