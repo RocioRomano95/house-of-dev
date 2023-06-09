@@ -3,27 +3,29 @@ import { axiosURL } from "../../settings/url";
 import { useEffect, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import getAllProperties from "../../state/properties";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import "./index.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import getAllProperties from "../../state/properties";
 
 function Cards() {
   // const dispatch = useDispatch();
   // const properties = useSelector((state) => state.properties);
+  const [refreshDelete, setRefreshDelete] = useState(true);
   const [properties, setProperties] = useState([]);
   const user = useSelector((state) => state.user);
-  console.log("properties=>", properties);
 
   const handleDelete = (id) => {
     axios
       .delete(`${axiosURL}/api/admin/delete-property/${id}`)
-      .then(() => {
-        console.log("propiedad eliminada");
+      .then((property) => {
+        property.data;
+        setRefreshDelete(!refreshDelete);
       })
       .catch((error) => {
         console.log(error);
@@ -39,7 +41,7 @@ function Cards() {
         // dispatch(getAllProperties(propiedades.data));
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [refreshDelete]);
 
   return (
     <Container>
