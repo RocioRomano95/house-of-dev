@@ -1,9 +1,13 @@
 import React from "react";
 import { axiosURL } from "../settings/url";
 import useInput from "../hooks/useInput";
+import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
 import { useNavigate } from "react-router";
 import axios from "axios";
 
@@ -42,67 +46,149 @@ function CreateProperty() {
   };
 
   return (
-    <Card style={{ width: "50%" }}>
-      <Form className="container" onSubmit={handleCreate}>
-        <div className="row">
-          <Form.Group className="mb-3 p-2" controlId="formBasicDescription">
-            <Form.Label>Descripcion</Form.Label>
-            <Form.Control
-              {...description}
-              type="text"
-              placeholder="Description"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3 p-2" controlId="formBasicAddress">
-            <Form.Label>Direccion</Form.Label>
-            <Form.Control {...address} type="text" placeholder="name" />
-          </Form.Group>
-          <Form.Group className="mb-3 p-2" controlId="formBasicPrice">
-            <Form.Label>Precio</Form.Label>
-            <Form.Control {...price} type="number" placeholder="price" />
-          </Form.Group>
-          <Form.Group className="mb-3 p-2 " controlId="formBasicImage">
-            <Form.Label>URL imagen</Form.Label>
-            <Form.Control {...image} type="url" placeholder="image" />
-          </Form.Group>
-          <Form.Group className="mb-3 p-2" controlId="formBasicLocality">
-            <Form.Label>Localidad</Form.Label>
-            <Form.Control {...locality} type="text" placeholder="Locality" />
-          </Form.Group>
-          <Form.Group className="mb-3 p-2" controlId="formBasicBedrooms">
-            <Form.Label>Habitaciones</Form.Label>
-            <Form.Control {...bedrooms} type="number" placeholder="Bedrooms" />
-          </Form.Group>
-          <Form.Group className="mb-3 p-2" controlId="formBasicBaths">
-            <Form.Label>Baños</Form.Label>
-            <Form.Control {...baths} type="number" placeholder="Baths" />
-          </Form.Group>{" "}
-          <Form.Group className="mb-3 p-2" controlId="formBasicSquareMeters">
-            <Form.Label>Metros cuadrados</Form.Label>
-            <Form.Control
-              {...square_meters}
-              type="number"
-              placeholder="Square Meters"
-            />
-          </Form.Group>
-          <Form.Group className="mb-3 p-2" controlId="formBasicPostDate">
-            <Form.Label>Fecha de publicacion</Form.Label>
-            <Form.Control {...post_date} type="date" placeholder="Post date" />
-          </Form.Group>
-          <Form.Group className="mb-3 p-2" controlId="formBasicState">
-            <Form.Label>Estado(alquiler o venta)</Form.Label>
-            <Form.Control {...state} type="text" placeholder="State" />
-          </Form.Group>
-          <Button
-            className="button-card"
-            style={{ background: "#120910" }}
-            type="submit"
-          >
-            Submit
-          </Button>
-        </div>
-      </Form>
-    </Card>
+    <Container
+      className="d-flex justify-content-center p-3 "
+      style={{ fontSize: "0.9em" }}
+    >
+      <Card style={{ width: "80%", borderRadius: 0 }}>
+        <h3>Crear Propiedad</h3>
+        <Form className="container" onSubmit={handleCreate}>
+          <div className="row">
+            <Form.Group className="p-2" controlId="formBasicDescription">
+              <Row>
+                <Col md={3}>
+                  <Form.Label>Descripcion</Form.Label>
+                </Col>
+                <Col md={9}>
+                  <Form.Control
+                    {...description}
+                    type="text"
+                    placeholder="description"
+                  />
+                </Col>
+              </Row>
+            </Form.Group>
+            <Form.Group className="p-2" controlId="formBasicAddress">
+              <Row>
+                <Col md={3}>
+                  <Form.Label>Direccion</Form.Label>
+                </Col>
+                <Col md={9}>
+                  <Form.Control
+                    {...address}
+                    type="text"
+                    placeholder="address"
+                  />
+                </Col>
+              </Row>
+            </Form.Group>
+            <Form.Group className="p-2" controlId="formBasicPrice">
+              <Row>
+                <Col md={3}>
+                  <Form.Label>Precio</Form.Label>
+                </Col>
+                <Col md={9}>
+                  <Form.Control {...price} type="number" placeholder="price" />
+                </Col>
+              </Row>
+            </Form.Group>
+            <Form.Group className="p-2 " controlId="formBasicImage">
+              <Row>
+                <Col md={3}>
+                  <Form.Label>URL imagen</Form.Label>
+                </Col>
+                <Col md={9}>
+                  <Form.Control {...image} type="url" placeholder="image" />
+                </Col>
+              </Row>
+            </Form.Group>
+            <Form.Group className="p-2" controlId="formBasicLocality">
+              <Row>
+                <Col md={3}>
+                  <Form.Label>Localidad</Form.Label>
+                </Col>
+                <Col md={9}>
+                  <Form.Control
+                    {...locality}
+                    type="text"
+                    placeholder="locality"
+                  />
+                </Col>
+              </Row>
+            </Form.Group>
+            <Form.Group className="p-2" controlId="formBasicBedrooms">
+              <Row>
+                <Col md={3}>
+                  <Form.Label>Habitaciones</Form.Label>
+                </Col>
+                <Col md={9}>
+                  <Form.Control
+                    {...bedrooms}
+                    type="number"
+                    placeholder="bedrooms"
+                  />
+                </Col>
+              </Row>
+            </Form.Group>
+            <Form.Group className="p-2" controlId="formBasicBaths">
+              <Row>
+                <Col md={3}>
+                  <Form.Label>Baños</Form.Label>
+                </Col>
+                <Col md={9}>
+                  <Form.Control {...baths} type="number" placeholder="baths" />
+                </Col>
+              </Row>
+            </Form.Group>{" "}
+            <Form.Group className="p-2" controlId="formBasicSquareMeters">
+              <Row>
+                <Col md={3}>
+                  <Form.Label>Metros cuadrados</Form.Label>
+                </Col>
+                <Col md={9}>
+                  <Form.Control
+                    {...square_meters}
+                    type="number"
+                    placeholder="square meters"
+                  />
+                </Col>
+              </Row>
+            </Form.Group>
+            <Form.Group className="p-2" controlId="formBasicPostDate">
+              <Row>
+                <Col md={3}>
+                  <Form.Label>Fecha de publicacion</Form.Label>
+                </Col>
+                <Col md={9}>
+                  <Form.Control
+                    {...post_date}
+                    type="date"
+                    placeholder="post date"
+                  />
+                </Col>
+              </Row>
+            </Form.Group>
+            <Form.Group className="p-2" controlId="formBasicState">
+              <Row>
+                <Col md={3}>
+                  <Form.Label>Estado(alquiler o venta)</Form.Label>
+                </Col>
+                <Col md={9}>
+                  <Form.Control {...state} type="text" placeholder="state" />
+                </Col>
+              </Row>
+            </Form.Group>
+            <Button
+              className="button-card"
+              style={{ background: "#123ac8" }}
+              type="submit"
+            >
+              Listo!
+            </Button>
+          </div>
+        </Form>
+      </Card>
+    </Container>
   );
 }
 

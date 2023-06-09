@@ -60,6 +60,17 @@ function NavBar() {
                 Historial de citas
               </Nav.Link>
             </Nav>
+            <Form inline className="ml-auto">
+              <Link to="/logout">
+                <Button
+                  variant="outline-Info rounded-pill"
+                  className="btn-logout"
+                  onClick={handleLogout}
+                >
+                  Cerrar sesión
+                </Button>
+              </Link>
+            </Form>
           </Navbar.Collapse>
         </Navbar>
       ) : (
