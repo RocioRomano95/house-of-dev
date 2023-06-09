@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-//import useInput from "../hooks/useInput";
 import { Navbar, Nav, Form, FormControl, Button, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -12,7 +11,7 @@ import { setLogOut } from "../../state/user";
 function NavBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user); //con este hook puedo traer la informacion del usuario
+  const user = useSelector((state) => state.user);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 
   const handleSearchClick = () => {
@@ -70,25 +69,7 @@ function NavBar() {
                   Cerrar sesión
                 </Button>
               </Link>
-              {/*   <h4>{user.name}</h4> */}
             </Form>
-
-          ) : (
-            <Form inline className="ml-auto">
-              <Link to="/login">
-                <Button
-                  variant="outline-Info rounded-pill"
-                  className="btn-login"
-                  type="submit"
-                >
-                  Iniciar sesión
-                </Button>
-              </Link>
-            </Form>
-          )}
-        </Navbar.Collapse>
-      </Navbar>
-
           </Navbar.Collapse>
         </Navbar>
       ) : (
@@ -153,7 +134,6 @@ function NavBar() {
           </Navbar.Collapse>
         </Navbar>
       )}
-
     </div>
   );
 }
