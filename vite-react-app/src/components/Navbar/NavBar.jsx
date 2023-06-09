@@ -94,14 +94,15 @@ function NavBar() {
                   Cerrar sesión
                 </Button>
               </Link>
+              {/*   <h4>{user.name}</h4> */}
             </Form>
           ) : (
             <Form inline className="ml-auto">
-              <h3> {user.name}</h3>
               <Link to="/login">
                 <Button
                   variant="outline-Info rounded-pill"
                   className="btn-login"
+                  type="submit"
                 >
                   Iniciar sesión
                 </Button>

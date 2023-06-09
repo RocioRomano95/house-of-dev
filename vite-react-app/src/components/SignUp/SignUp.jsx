@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./index.css";
+import Swal from "sweetalert2";
 
 export default function SignUp() {
   const name = useInput();
@@ -30,8 +31,41 @@ export default function SignUp() {
         },
         { withCredentials: true }
       )
-      .then((res) => navigate("/login"))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        console.log("RES DE LOGIN", res.data.email);
+        /*   if (res.data.email == false) {
+          Swal.fire({
+            icon: "error",
+            title: `Email incorrecto`,
+          });
+        } */
+        Swal.fire({
+          icon: "success",
+          title: `Tu registro se ha realizado con éxito`,
+        });
+        navigate("/login");
+      })
+      .catch((error) => {
+        if (email.value) {
+          Swal.fire({
+            icon: "error",
+            title: `El email ya se encuentra registrado`,
+          });
+        }
+        /* if (name.value == null) {
+          Swal.fire({
+            icon: "error",
+            title: `Debes completar todos los campos`,
+          });
+        } */
+        /* if (email.value == undefined) {
+          Swal.fire({
+            icon: "success",
+            title: `email incorrecto`,
+          });
+        } */
+        console.log(error);
+      });
   };
 
   return (
