@@ -47,7 +47,7 @@ function CreateProperty() {
 
   return (
     <Container
-      className="d-flex justify-content-center p-3"
+      className="d-flex justify-content-center p-3 "
       style={{ fontSize: "0.9em" }}
     >
       <Card style={{ width: "80%", borderRadius: 0 }}>

@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import SignUp from "./components/SignUp/SignUp";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
-import Footer from "./components/Footer/Footer";
 import axios from "axios";
 import { axiosURL } from "./settings/url";
 import { useDispatch } from "react-redux";
@@ -31,7 +30,6 @@ function App() {
         <Route path="/property/:id" element={<PropertyDetail />} />
         <Route path="/create-property" element={<CreateProperty />} />
       </Routes>
-      <Footer />
     </>
   );
 }
