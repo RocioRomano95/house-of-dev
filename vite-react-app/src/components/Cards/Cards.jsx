@@ -3,18 +3,34 @@ import { axiosURL } from "../../settings/url";
 import { useEffect, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 // import getAllProperties from "../../state/properties";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import "./index.css";
+import { useDispatch, useSelector } from "react-redux";
+import getAllProperties from "../../state/properties";
 
 function Cards() {
   // const dispatch = useDispatch();
   // const properties = useSelector((state) => state.properties);
+  const [refreshDelete, setRefreshDelete] = useState(true);
   const [properties, setProperties] = useState([]);
+  const user = useSelector((state) => state.user);
+
+  const handleDelete = (id) => {
+    axios
+      .delete(`${axiosURL}/api/admin/delete-property/${id}`)
+      .then((property) => {
+        property.data;
+        setRefreshDelete(!refreshDelete);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -25,7 +41,7 @@ function Cards() {
         // dispatch(getAllProperties(propiedades.data));
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [refreshDelete]);
 
   return (
     <Container>
@@ -34,7 +50,28 @@ function Cards() {
           <Card style={{ width: "50%" }}>
             <Row>
               <Col md={4}>
-                <Card.Img src={house.image} />
+                <Row>
+                  <Card.Img src={house.image} />
+                </Row>
+                {user.is_admin ? (
+                  <Row>
+                    <Col md={5}>
+                      <Button style={{ borderRadius: "25px" }}>Editar</Button>
+                    </Col>
+                    <Col md={5}>
+                      <Button
+                        onClick={() => {
+                          handleDelete(house.id);
+                        }}
+                        style={{ borderRadius: "25px" }}
+                      >
+                        Eliminar
+                      </Button>
+                    </Col>
+                  </Row>
+                ) : (
+                  <></>
+                )}
               </Col>
 
               <Col md={8}>
