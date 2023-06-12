@@ -9,8 +9,7 @@ import Col from "react-bootstrap/Col";
 import NavBar from "../Navbar/NavBar.jsx";
 import Container from "react-bootstrap/Container";
 import "./index.css";
-
-import { HiOutlineMapPin } from "react-icons/hi2";
+import Footer from "../Footer/Footer";
 
 
 const PropertyDetail = () => {
@@ -20,9 +19,9 @@ const PropertyDetail = () => {
   const fetchProperties = (id) => {
     axios
       .get(`${axiosURL}/api/properties/${id}`)
-      .then((fetchedProperties) => {
-        setProperty(fetchedProperties.data);
-        console.log("fetched property", fetchedProperties.data);
+      .then((fetchedProperty) => {
+        setProperty(fetchedProperty.data);
+        console.log("fetch property", fetchedProperty.data);
       })
       .catch((err) => console.log(err));
   };
@@ -31,11 +30,11 @@ const PropertyDetail = () => {
     fetchProperties(id);
   }, []);
 
-  return (
-    <div className="container d-flex flex-column min-vh-100">
-      <NavBar className="h-100" />
-
-      <Container>
+  return ( 
+    
+    <div className="caja1"  >
+   <NavBar flex-grow-1/>
+ <Container >
       <Row>
         <Col sm={8}><Card.Img variant="top" src={property.image} /></Col>
         <Col sm={4}>  <ListGroup variant="flush" >
@@ -50,7 +49,8 @@ const PropertyDetail = () => {
             <ListGroup.Item> <span style={{ fontWeight: 'bold' }}>Estado: </span> {property.state}</ListGroup.Item>
           </ListGroup> </Col>
       </Row>
-      </Container>
+      </Container> 
+    <Footer flex-grow-1/>
     </div>
   );
 };

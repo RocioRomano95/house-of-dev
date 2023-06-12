@@ -34,7 +34,7 @@ function NavBar() {
       {user.is_admin ? (
         <Navbar expand="lg" className="navbar-admin">
           <Navbar.Brand href="#home" className="mr-auto custom-svg-container">
-            <Image src="Group177.svg" alt="Logo" className="logo-image" />
+          
           </Navbar.Brand>
           <Form inline>
             <FormControl
