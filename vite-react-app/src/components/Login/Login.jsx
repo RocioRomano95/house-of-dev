@@ -17,7 +17,7 @@ function Login() {
   const password = useInput();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);//traigo la informacion de redux a react desde el store
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ function Login() {
           icon: "success",
           title: `BIenvenido`,
         });
-        dispatch(setLogin(user.data));
+        dispatch(setLogin(user.data)); //envio la informacion a redux
         navigate("/");
       })
       .catch((error) => {

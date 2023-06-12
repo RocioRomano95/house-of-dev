@@ -16,7 +16,7 @@ const initialState = {
 const userReducer = createReducer(initialState, {
   //Creo y exporto mi estado para que el store lo pueda utilizar
   [setLogOut]: (state, action) => action.payload, //setLogOut es la propiedad que voy a usar desde los componentes de mi aplicacion cuando queramos acceder al estado
-  [setLogin]: (state, action) => action.payload,
+  [setLogin]: (state, action) => action.payload, //Recibo la informacion en un objeto payload y la guardo
 });
 
 export default userReducer;
