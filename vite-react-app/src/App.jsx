@@ -10,7 +10,6 @@ import { setLogin } from "./state/user";
 import { useEffect } from "react";
 import PropertyDetail from "./components/Properties/PropertyDetail";
 import CreateProperty from "./components/CreateProperty";
-import Rent_sale from "./components/PropertyRentSale/Rent_sale";
 
 function App() {
   const dispatch = useDispatch();
