@@ -45,6 +45,7 @@
 
 .navbar-link a {
   color: white;
+  text-decoration: none;
 }
 
 .navbar-admin {

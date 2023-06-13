@@ -33,12 +33,6 @@ export default function SignUp() {
       )
       .then((res) => {
         console.log("RES DE LOGIN", res.data.email);
-        /*   if (res.data.email == false) {
-          Swal.fire({
-            icon: "error",
-            title: `Email incorrecto`,
-          });
-        } */
         Swal.fire({
           icon: "success",
           title: `Tu registro se ha realizado con éxito`,
@@ -52,18 +46,6 @@ export default function SignUp() {
             title: `El email ya se encuentra registrado`,
           });
         }
-        /* if (name.value == null) {
-          Swal.fire({
-            icon: "error",
-            title: `Debes completar todos los campos`,
-          });
-        } */
-        /* if (email.value == undefined) {
-          Swal.fire({
-            icon: "success",
-            title: `email incorrecto`,
-          });
-        } */
         console.log(error);
       });
   };

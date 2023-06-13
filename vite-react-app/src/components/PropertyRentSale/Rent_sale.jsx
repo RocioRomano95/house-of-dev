@@ -1,46 +1,40 @@
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { axiosURL } from "../../settings/url";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import "./index.css";
-import { useSelector } from "react-redux";
+import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import getAllProperties from "../../state/properties";
 
-function Cards() {
-  const [refreshDelete, setRefreshDelete] = useState(true);
-  const [properties, setProperties] = useState([]);
-  const user = useSelector((state) => state.user);
-  const state = useSelector((state) => state.properties);
-  console.log("STATE", state);
+const Rent_sale = () => {
+  // const [filterProperties, setFilterProperities] = useState([]);
+  const properties = useSelector((state) => state.properties);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { type } = useParams();
 
-  const handleDelete = (id) => {
+  const filerRent_sale = (type) => {
+    console.log(type);
     axios
-      .delete(`${axiosURL}/api/admin/delete-property/${id}`)
-      .then((property) => {
-        property.data;
-        setRefreshDelete(!refreshDelete);
+      .get(`${axiosURL}/api/properties`)
+      .then((properties) => {
+        const filterByRent_sale = properties.data.filter((house) => {
+          if (house.state == `${type}`) return house.state;
+        });
+        console.log("FILTER POR ALQUILER", filterByRent);
+        dispatch(getAllProperties(filterByRent_sale));
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    axios
-      .get(`${axiosURL}/api/properties`)
-      .then((propiedades) => {
-        const filterByState = propiedades.data.filter((house) => {
-          return house.state == state;
-        });
-        console.log("PROPIEDADES", propiedades.data);
-        setProperties(filterByState);
-      })
-      .catch((err) => console.log(err));
-  }, [refreshDelete, state]);
+    filerRent_sale(type);
+  }, []);
 
   return (
     <Container>
@@ -52,25 +46,6 @@ function Cards() {
                 <Row>
                   <Card.Img src={house.image} />
                 </Row>
-                {user.is_admin ? (
-                  <Row>
-                    <Col md={5}>
-                      <Button style={{ borderRadius: "25px" }}>Editar</Button>
-                    </Col>
-                    <Col md={5}>
-                      <Button
-                        onClick={() => {
-                          handleDelete(house.id);
-                        }}
-                        style={{ borderRadius: "25px" }}
-                      >
-                        Eliminar
-                      </Button>
-                    </Col>
-                  </Row>
-                ) : (
-                  <></>
-                )}
               </Col>
 
               <Col md={8}>
@@ -110,16 +85,15 @@ function Cards() {
                     >
                       Fa
                     </Button>
-                    <Link to={`/property/${house.id}`}>
-                      <Button
-                        variant="outline-info"
-                        size="md"
-                        type="submit"
-                        style={{ borderRadius: "25px" }}
-                      >
-                        ver más
-                      </Button>
-                    </Link>
+
+                    <Button
+                      variant="outline-info"
+                      size="md"
+                      type="submit"
+                      style={{ borderRadius: "25px" }}
+                    >
+                      ver más
+                    </Button>
                   </Col>
                 </Row>
               </Col>
@@ -129,6 +103,6 @@ function Cards() {
       })}
     </Container>
   );
-}
+};
 
-export default Cards;
+export default Rent_sale;

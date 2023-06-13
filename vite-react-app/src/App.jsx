@@ -10,7 +10,7 @@ import { setLogin } from "./state/user";
 import { useEffect } from "react";
 import PropertyDetail from "./components/Properties/PropertyDetail";
 import CreateProperty from "./components/CreateProperty";
-import Rent from "./components/PropertyRent/Rent";
+import Rent_sale from "./components/PropertyRentSale/Rent_sale";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/property/:id" element={<PropertyDetail />} />
         <Route path="/create-property" element={<CreateProperty />} />
-        <Route path="/rent" element={<Rent />} />
+        {/* <Route path="/rent_sale/:type" element={<Rent_sale />} /> */}
       </Routes>
     </>
   );
