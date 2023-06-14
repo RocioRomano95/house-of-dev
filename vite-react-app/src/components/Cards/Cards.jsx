@@ -33,26 +33,39 @@ function Cards() {
   };
 
   useEffect(() => {
-    axios
-      .get(`${axiosURL}/api/properties`)
-      .then((propiedades) => {
-        const filterByState = propiedades.data.filter((house) => {
-          /*     if (house.state == state) {
-            if (
-              (house.category.name == category) &
-              (house.location == location)
-            ) {
-              return house;
-            }
-          } */
-          return house.state == state; //venta o alquiler;
-          //ahora necesito category y location
+    console.log("Location=>", location);
+    console.log("category=>", category);
+
+    if (!location && !category) {
+      axios
+        .get(`${axiosURL}/api/properties`)
+        .then((propiedades) => {
+          const filterByState = propiedades.data.filter((house) => {
+            return house.state == state; //venta o alquiler;
+            //ahora necesito category y location
+          });
+          console.log("PROPIEDADES", propiedades.data);
+          setProperties(filterByState);
+        })
+        .catch((err) => console.log(err));
+    }
+    if (location) {
+      axios
+        .get(`${axiosURL}/api/properties//search/${location}/${state}`)
+        .then((properties) => {
+          console.log("Properties location", properties.data);
+          setProperties(properties.data);
         });
-        console.log("PROPIEDADES", propiedades.data);
-        setProperties(filterByState);
-      })
-      .catch((err) => console.log(err));
-  }, [refreshDelete, state]);
+    }
+    if (category) {
+      axios
+        .get(`${axiosURL}/api/properties/filter-category/${category}/${state}`)
+        .then((properties) => {
+          console.log("Properties location", properties.data);
+          setProperties(properties.data);
+        });
+    }
+  }, [refreshDelete, state, category, location]);
 
   return (
     <Container>
