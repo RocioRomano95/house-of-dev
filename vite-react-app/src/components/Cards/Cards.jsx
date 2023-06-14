@@ -1,24 +1,24 @@
 import axios from "axios";
 import { axiosURL } from "../../settings/url";
 import { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import getAllProperties from "../../state/properties";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import "./index.css";
-import { useDispatch, useSelector } from "react-redux";
-import getAllProperties from "../../state/properties";
+import { useSelector } from "react-redux";
 
 function Cards() {
-  // const dispatch = useDispatch();
-  // const properties = useSelector((state) => state.properties);
   const [refreshDelete, setRefreshDelete] = useState(true);
   const [properties, setProperties] = useState([]);
   const user = useSelector((state) => state.user);
+  const state = useSelector((state) => state.properties);
+  const location = useSelector((state) => state.location);
+  const category = useSelector((state) => state.categories);
+  console.log("STATE", state);
+  console.log("CATEGORIAS", category);
 
   const handleDelete = (id) => {
     axios
@@ -36,12 +36,23 @@ function Cards() {
     axios
       .get(`${axiosURL}/api/properties`)
       .then((propiedades) => {
+        const filterByState = propiedades.data.filter((house) => {
+          /*     if (house.state == state) {
+            if (
+              (house.category.name == category) &
+              (house.location == location)
+            ) {
+              return house;
+            }
+          } */
+          return house.state == state; //venta o alquiler;
+          //ahora necesito category y location
+        });
         console.log("PROPIEDADES", propiedades.data);
-        setProperties(propiedades.data);
-        // dispatch(getAllProperties(propiedades.data));
+        setProperties(filterByState);
       })
       .catch((err) => console.log(err));
-  }, [refreshDelete]);
+  }, [refreshDelete, state]);
 
   return (
     <Container>

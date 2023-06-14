@@ -5,6 +5,7 @@ export const setLogOut = createAction("LOG_OUT");
 
 const initialState = {
   //Creo un objeto que va ser mi estado inicial para user
+  id: null,
   name: null,
   lastname: null,
   email: null,
