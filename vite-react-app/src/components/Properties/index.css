@@ -1,5 +1,19 @@
 .caja1 {
-  background-color: rgb(185 28 28) ;
+  background-color:white ;
 width: 100vw;
 
+}
+.btn-circle-primary {
+  margin-left: 20px;
+
+  border-radius: 2px solid blue;
+}
+
+.btn-circle-secondary {
+  background-color: blue;
+ 
+border-radius: 50%;
+}
+.image1{
+  margin-left: 2rem
 }
