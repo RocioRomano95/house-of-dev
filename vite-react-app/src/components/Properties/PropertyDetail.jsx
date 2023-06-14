@@ -4,6 +4,14 @@ import { useEffect, useState } from "react";
 import { axiosURL } from "../../settings/url";
 import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import NavBar from "../Navbar/NavBar.jsx";
+import Container from "react-bootstrap/Container";
+import Footer from "../Footer/Footer";
+import { Button } from "react-bootstrap";
+import "./index.css";
+import { CiHeart } from "react-icons/ci";
 
 const PropertyDetail = () => {
   const [property, setProperty] = useState({});
@@ -12,9 +20,9 @@ const PropertyDetail = () => {
   const fetchProperties = (id) => {
     axios
       .get(`${axiosURL}/api/properties/${id}`)
-      .then((fetchedProperties) => {
-        setProperty(fetchedProperties.data);
-        console.log("fetched property", fetchedProperties.data);
+      .then((fetchedProperty) => {
+        setProperty(fetchedProperty.data);
+        console.log("fetch property", fetchedProperty.data);
       })
       .catch((err) => console.log(err));
   };
@@ -24,22 +32,197 @@ const PropertyDetail = () => {
   }, []);
 
   return (
-    <>
-      <Card style={{ width: "18rem" }}>
-        <Card.Title>Title</Card.Title>
-        <ListGroup variant="flush">
-          <ListGroup.Item>{property.description}</ListGroup.Item>
-          <ListGroup.Item>{property.address}</ListGroup.Item>
-          <ListGroup.Item>{property.price}</ListGroup.Item>
-          <ListGroup.Item>{property.locality}</ListGroup.Item>
-          <ListGroup.Item>{property.bedrooms}</ListGroup.Item>
-          <ListGroup.Item>{property.baths}</ListGroup.Item>
-          <ListGroup.Item>{property.square_meters}</ListGroup.Item>
-          <ListGroup.Item>{property.post_date}</ListGroup.Item>
-          <ListGroup.Item>{property.state}</ListGroup.Item>
-        </ListGroup>
-      </Card>
-    </>
+    <div className="caja1">
+      <NavBar />
+      <Container fluid>
+        <Row>
+          <Col sm={6}>
+            <Card.Img
+              className="my-5 border rounded image1"
+              variant="top"
+              src={property.image}
+            />
+          </Col>
+          <Col md={1} />
+          <Col sm={4}>
+            <ListGroup className="my-5 " /* variant="flush" */>
+              <ListGroup.Item
+                style={{ fontFamily: "Montserrat", color: "#123AC8" }}
+              >
+                $
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {property.price}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{ fontFamily: "Montserrat", color: "#123AC8" }}
+              >
+                Descripción:
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  {property.description}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#123AC8",
+                }}
+              >
+                Dirección:
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  {property.address}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#123AC8",
+                }}
+              >
+                Localidad:
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  {property.locality}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#123AC8",
+                }}
+              >
+                Habitaciones:
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  {property.bedrooms}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#123AC8",
+                }}
+              >
+                Baños:
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  {property.baths}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#123AC8",
+                }}
+              >
+                M²:
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  {property.square_meters}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#123AC8",
+                }}
+              >
+                Publicado:
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  {property.post_date}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{
+                  fontFamily: "Montserrat",
+                  color: "#123AC8",
+                }}
+              >
+                Estado:
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  {property.state}
+                </span>
+              </ListGroup.Item>
+            </ListGroup>
+            <Row direction="horizontal">
+              <Col xs={8} md={2} />
+              <Col xs={1} md={4}>
+                <Button className="rounded-circle btn-circle">
+                  <CiHeart />{" "}
+                </Button>{" "}
+              </Col>
+              <Col xs={8} md={4}>
+                {" "}
+                <Button className="rounded btn-circle ">
+                  Agendar cita
+                </Button>{" "}
+              </Col>
+              <Col xs={8} md={4} />
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+
+      <Footer flex-grow-1 />
+    </div>
   );
 };
 

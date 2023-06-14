@@ -1,7 +1,7 @@
 import React from "react";
-import "./index.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import "./index.css" ;
 
 function Footer() {
   const user = useSelector((state) => state.user);
