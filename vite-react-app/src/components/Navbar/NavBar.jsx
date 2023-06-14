@@ -15,13 +15,14 @@ import useInput from "../../hooks/useInput"; //!Este hook podria usarlarlo en en
 
 function NavBar() {
   const [searchInput, setSearchInput] = useState("");
+  const [categoryToggle, setCategoryToggle] = useState("categorias");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const location = useSelector((state) => state.location);
   const categories = useSelector((state) => state.categories);
 
-  const [filter, setfilter] = useState("todos");
   console.log("LOCATION", searchInput);
 
   const handleSearchClick = (e) => {
@@ -31,18 +32,7 @@ function NavBar() {
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    if (filter == "location") {
-      dispatch(getLocation(searchInput));
-      dispatch(getCategories(""));
-    }
-    if (filter == "categories") {
-      dispatch(getCategories(searchInput));
-      dispatch(getLocation(""));
-    }
-    // if (filter == "todos") {
-    //   dispatch(getCategories(""));
-    //   dispatch(getLocation(""));
-    // }
+    dispatch(getLocation(searchInput));
   }; //Esta funcion es enviado por el evento onsubmit en mi form que es la barra de busqueda, enviando con el dispatch la accion (getLocation) y el estado actual de searchInput que ya fue anteriormente setada por setsearchInput para de esta manera actualizar el estado en la store.
 
   const handleClick = (state) => {
@@ -50,15 +40,16 @@ function NavBar() {
     navigate("/");
   }; //con el dispatch envio la accion seteada al reducer y asi cambiar el estado estado inicial, esta funcion handleClick la llamo en los links de venta y alquiler en el evento onclik ahi paso por argumento la palabra que quiero que me setee mi action("alquiler", "venta").
 
-  console.log("filter", filter);
-  const handleClickFilter = (category) => {
-    // dispatch(getCategories(category));
-    if (category == "todos") {
-      dispatch(getCategories(""));
-      dispatch(getLocation(""));
-    }
+  const handleClickFilter = () => {
+    dispatch(getCategories(""));
+    dispatch(getLocation(""));
+    setCategoryToggle("Categorias");
+  };
+
+  const handleClickCategories = (category) => {
+    dispatch(getCategories(category));
+    setCategoryToggle(category);
     setSearchInput("");
-    setfilter(category);
   };
 
   const handleLogout = (e) => {
@@ -123,27 +114,33 @@ function NavBar() {
             <FormControl
               value={searchInput}
               type="text"
-              placeholder="Buscar"
+              placeholder="Indique la zona"
               className={`mr-sm-2 rounded-pill custom-input`}
               onChange={handleSearchClick}
             />
-            <Button type="submit">search</Button>
+            <Button type="submit">Search</Button>
           </Form>
+          <Button onClick={handleClickFilter}>Sin filtro</Button>
 
           <Dropdown>
             <Dropdown.Toggle variant="dark" id="dropdown-basic">
-              filtrar por
+              {categoryToggle}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item onClick={() => handleClickFilter("location")}>
-                Locación
+              <Dropdown.Item
+                onClick={() => handleClickCategories("departamento")}
+              >
+                Departamento
               </Dropdown.Item>
-              <Dropdown.Item onClick={() => handleClickFilter("categories")}>
-                Categorías
+              <Dropdown.Item onClick={() => handleClickCategories("ph")}>
+                PH
               </Dropdown.Item>
-              <Dropdown.Item onClick={() => handleClickFilter("todos")}>
-                Todos
+              <Dropdown.Item onClick={() => handleClickCategories("casa")}>
+                Casa
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleClickCategories("terreno")}>
+                Terreno
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
