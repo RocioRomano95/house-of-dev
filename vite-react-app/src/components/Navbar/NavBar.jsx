@@ -9,6 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLogOut } from "../../state/user";
 import { getState } from "../../state/properties";
 import { getLocation } from "../../state/location";
+import { getCategories } from "../../state/categories";
+import Dropdown from "react-bootstrap/Dropdown";
+import useInput from "../../hooks/useInput"; //!Este hook podria usarlarlo en en la funcion handleSearchClick?
 
 function NavBar() {
   const [locationInput, setLocationInput] = useState("");
@@ -19,14 +22,13 @@ function NavBar() {
   console.log("LOCATION", locationInput);
 
   const handleSearchClick = (e) => {
-    setLocationInput(e.target.value);
-  };
+    setLocationInput(e.target.value); //tigres
+  }; //Esta funcion manejadora lo que hace es que al pasarla por un evento onChange, que esta en mi barra de busqueda, cambia el valor ingresado por el usuario por medio de la propiedad value y con el setLocationInput setea el estado inicial de locationInput quien luego va ser utilizada en el accion(getLocation).
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-
     dispatch(getLocation(locationInput));
-  };
+  }; //Esta funcion es enviado por el evento onsubmit en mi form que es la barra de busqueda, enviando con el dispatch la accion (getLocation) y el estado actual de locationInput que ya fue anteriormente setada por setLOcationInput para de esta manera actualizar el estado en la store.
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -41,8 +43,12 @@ function NavBar() {
   };
 
   const handleClick = (state) => {
-    dispatch(getState(state));
+    dispatch(getState(state)); //alquiler o venta
     navigate("/");
+  }; //con el dispatch envio la accion seteada al reducer y asi cambiar el estado estado inicial, esta funcion handleClick la llamo en los links de venta y alquiler en el evento onclik ahi paso por argumento la palabra que quiero que me setee mi action("alquiler", "venta").
+
+  const handleClickCategories = (category) => {
+    dispatch(getCategories(category));
   };
 
   return (
@@ -98,13 +104,31 @@ function NavBar() {
               className={`mr-sm-2 rounded-pill custom-input`}
               onChange={handleSearchClick}
             />
-            <Button type="submit"></Button>
+            <Button type="submit">search</Button>
           </Form>
+
+          <Dropdown>
+            <Dropdown.Toggle variant="dark" id="dropdown-basic">
+              filtrar por
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={() => handleClickCategories("locacion")}>
+                Locación
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleClickCategories("categoria")}>
+                Categorías
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleClickCategories("todos")}>
+                Todos
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="m-auto">
               <Nav.Link className="navbar-link">
-                {/*  <Link to={`/rent_sale/${properties.state}`}>Alquiler</Link> */}
                 <p onClick={() => handleClick("alquiler")}>Alquiler</p>
               </Nav.Link>
               <Nav.Link className="navbar-link">
@@ -151,5 +175,4 @@ function NavBar() {
     </div>
   );
 }
-
 export default NavBar;

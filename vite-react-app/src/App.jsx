@@ -29,7 +29,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/property/:id" element={<PropertyDetail />} />
         <Route path="/create-property" element={<CreateProperty />} />
-        {/* <Route path="/rent_sale/:type" element={<Rent_sale />} /> */}
       </Routes>
     </>
   );

@@ -15,7 +15,10 @@ function Cards() {
   const [properties, setProperties] = useState([]);
   const user = useSelector((state) => state.user);
   const state = useSelector((state) => state.properties);
+  const location = useSelector((state) => state.location);
+  const category = useSelector((state) => state.categories);
   console.log("STATE", state);
+  console.log("CATEGORIAS", category);
 
   const handleDelete = (id) => {
     axios
@@ -34,7 +37,16 @@ function Cards() {
       .get(`${axiosURL}/api/properties`)
       .then((propiedades) => {
         const filterByState = propiedades.data.filter((house) => {
-          return house.state == state;
+          /*     if (house.state == state) {
+            if (
+              (house.category.name == category) &
+              (house.location == location)
+            ) {
+              return house;
+            }
+          } */
+          return house.state == state; //venta o alquiler;
+          //ahora necesito category y location
         });
         console.log("PROPIEDADES", propiedades.data);
         setProperties(filterByState);
