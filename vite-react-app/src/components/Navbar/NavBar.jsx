@@ -11,7 +11,6 @@ import { getState } from "../../state/properties";
 import { getLocation } from "../../state/location";
 import { getCategories } from "../../state/categories";
 import Dropdown from "react-bootstrap/Dropdown";
-import useInput from "../../hooks/useInput"; //!Este hook podria usarlarlo en en la funcion handleSearchClick?
 
 function NavBar() {
   const [searchInput, setSearchInput] = useState("");
@@ -20,10 +19,6 @@ function NavBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  const location = useSelector((state) => state.location);
-  const categories = useSelector((state) => state.categories);
-
-  console.log("LOCATION", searchInput);
 
   const handleSearchClick = (e) => {
     setSearchInput(e.target.value);
