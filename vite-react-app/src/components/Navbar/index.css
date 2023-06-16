@@ -45,10 +45,15 @@
 
 .navbar-link a {
   color: white;
-  text-decoration: none;
 }
 
 .navbar-admin {
   background-color: #123ac8;
   height: 80px;
+}
+
+.icono-perfil {
+  margin-right: 6px;
+  height: 35px;
+  width: 35px;
 }
