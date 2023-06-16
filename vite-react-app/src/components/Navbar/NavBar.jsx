@@ -155,7 +155,7 @@ function NavBar() {
               <Nav.Link className="navbar-link" href="#favoritos">
                 Favoritos
               </Nav.Link>
-              <Nav.Link className="navbar-link" href="#perfil">
+              <Nav.Link className="navbar-link" href="edit-user">
                 Mi perfil
               </Nav.Link>
             </Nav>
