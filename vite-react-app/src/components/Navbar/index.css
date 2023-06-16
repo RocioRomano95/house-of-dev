@@ -1,0 +1,59 @@
+.navbar {
+  background-color: #fe4236;
+}
+.custom-svg-container {
+  margin: 30px;
+  padding: 20px;
+}
+.custom-input {
+  border-color: white;
+}
+
+.nav-link {
+  color: #f7f3ee;
+  margin-right: 10px;
+}
+
+.nav-link:hover {
+  color: #f7f3ee;
+}
+
+.form-control {
+  margin-right: 10px;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+.btn-login {
+  background-color: #fe4236;
+  border-color: #fe4236;
+  color: white;
+  margin-right: 80px;
+}
+
+.btn-login {
+  background-color: #fe4236;
+  border-color: white;
+  color: white;
+}
+.custom-navbar {
+  background-color: #fe4236;
+  height: 80px;
+}
+
+.navbar-link a {
+  color: white;
+}
+
+.navbar-admin {
+  background-color: #123ac8;
+  height: 80px;
+}
+
+.icono-perfil {
+  margin-right: 5px;
+  height: 35px;
+  width: 35px;
+}

@@ -1,14 +1,38 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import SignUp from "./components/SignUp/SignUp";
+import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import axios from "axios";
+import { axiosURL } from "./settings/url";
+import { useDispatch } from "react-redux";
+import { setLogin } from "./state/user";
+import { useEffect } from "react";
+import PropertyDetail from "./components/Properties/PropertyDetail";
+import CreateProperty from "./components/CreateProperty";
+import EditUser from "./components/User/EditUser";
+
 
 function App() {
-  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get(`${axiosURL}/api/users/me`, { withCredentials: true })
+      .then((resp) => dispatch(setLogin(resp.data)))
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <>
-      <p>hola!</p>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/property/:id" element={<PropertyDetail />} />
+        <Route path="/create-property" element={<CreateProperty />} />
+        <Route path="/edit-user" element={<EditUser/>} />
+      </Routes>
     </>
   );
 }
