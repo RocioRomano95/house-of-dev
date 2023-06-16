@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 
 export default function SignUp() {
   const name = useInput();
-  const lastName = useInput();
+  const lastname = useInput();
   const password = useInput();
   const phone = useInput();
   const email = useInput();
@@ -24,15 +24,7 @@ export default function SignUp() {
         `${axiosURL}/api/users/signup`,
         {
           name: name.value,
-<<<<<<< HEAD
-          lastName: lastName.value,
-=======
-<<<<<<< HEAD
           lastname: lastname.value,
-=======
-          lastname: lastName.value,
->>>>>>> refs/remotes/origin/develop
->>>>>>> develop
           password: password.value,
           phone: phone.value,
           email: email.value,
@@ -88,7 +80,7 @@ export default function SignUp() {
               >
                 <Form.Control
                   required
-                  {...lastName}
+                  {...lastname}
                   type="text"
                   placeholder="Apellido"
                   style={{ borderRadius: "25px" }}
