@@ -38,6 +38,7 @@ function NavBar() {
   const handleClickFilter = () => {
     dispatch(getCategories(""));
     dispatch(getLocation(""));
+    setSearchInput("");
     setCategoryToggle("Categorias");
   };
 
@@ -66,14 +67,15 @@ function NavBar() {
             href="#home"
             className="mr-auto custom-svg-container"
           ></Navbar.Brand>
-          {/*     <Form inline onSubmit={handleSearchClick}>
+          <Form inline onSubmit={handleSubmitClick}>
             <FormControl
+              value={searchInput}
               type="text"
               placeholder="Buscar"
               className={`mr-sm-2 rounded-pill custom-input`}
-               onKeyDown={handleSearchClick} 
+              onChange={handleSearchClick}
             />
-          </Form> */}
+          </Form>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="m-auto">
@@ -101,24 +103,20 @@ function NavBar() {
           </Navbar.Collapse>
         </Navbar>
       ) : (
-        <Navbar expand="lg" className="custom-navbar">
+        <Navbar expand="lg" className="custom-navbar me-auto my-2 my-lg-0">
           <Navbar.Brand href="#home" className="mr-auto custom-svg-container">
             <Image src="Group177.svg" alt="Logo" className="logo-image" />
           </Navbar.Brand>
-          <Form inline onSubmit={handleSubmitClick}>
-            <FormControl
-              value={searchInput}
-              type="text"
-              placeholder="Indique la zona"
-              className={`mr-sm-2 rounded-pill custom-input`}
-              onChange={handleSearchClick}
-            />
-            <Button type="submit">Search</Button>
-          </Form>
-          <Button onClick={handleClickFilter}>Sin filtro</Button>
-
           <Dropdown>
-            <Dropdown.Toggle variant="dark" id="dropdown-basic">
+            <Dropdown.Toggle
+              style={{
+                background: "#ffffff",
+                color: "#212836",
+                margin: 0,
+                borderRadius: 0,
+              }}
+              id="dropdown-basic"
+            >
               {categoryToggle}
             </Dropdown.Toggle>
 
@@ -139,6 +137,55 @@ function NavBar() {
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
+          <Form
+            style={{
+              background: "#ffffff",
+              color: "#212836",
+              margin: 0,
+              borderRadius: 0,
+              border: "1px solid #0d6efd",
+            }}
+            className="d-flex"
+            inline
+            onSubmit={handleSubmitClick}
+          >
+            <FormControl
+              style={{
+                background: "#ffffff",
+                color: "#212836",
+                margin: 0,
+                borderRadius: 0,
+              }}
+              value={searchInput}
+              type="text"
+              placeholder="Indique la zona"
+              className={`mr-sm-2 custom-input`}
+              onChange={handleSearchClick}
+            />
+            <Button
+              style={{
+                background: "#ffffff",
+                color: "#212836",
+                margin: 0,
+                borderRadius: 0,
+              }}
+              type="submit"
+            >
+              Search
+            </Button>
+          </Form>
+
+          <Button
+            style={{
+              background: "#ffffff",
+              color: "#212836",
+              margin: 0,
+              borderRadius: 0,
+            }}
+            onClick={handleClickFilter}
+          >
+            Limpiar
+          </Button>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
