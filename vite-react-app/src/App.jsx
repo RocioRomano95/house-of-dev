@@ -5,7 +5,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import axios from "axios";
 import { axiosURL } from "./settings/url";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "./state/user";
 import { useEffect } from "react";
 import PropertyDetail from "./components/Properties/PropertyDetail";
@@ -14,7 +14,7 @@ import EditUser from "./components/User/EditUser";
 
 function App() {
   const dispatch = useDispatch();
-
+  const user = useSelector((state) => state.user);
   useEffect(() => {
     axios
       .get(`${axiosURL}/api/users/me`, { withCredentials: true })

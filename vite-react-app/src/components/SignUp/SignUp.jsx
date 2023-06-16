@@ -24,9 +24,7 @@ export default function SignUp() {
         `${axiosURL}/api/users/signup`,
         {
           name: name.value,
-
           lastname: lastname.value,
-
           password: password.value,
           phone: phone.value,
           email: email.value,
