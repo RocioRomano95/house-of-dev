@@ -93,7 +93,7 @@ export default function SignUp() {
                 <Form.Control
                   required
                   {...email}
-                  type="text"
+                  type="email"
                   placeholder="Email"
                   style={{ borderRadius: "25px" }}
                 />
