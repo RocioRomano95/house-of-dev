@@ -11,9 +11,10 @@ import { getState } from "../../state/properties";
 import { getLocation } from "../../state/location";
 import { getCategories } from "../../state/categories";
 import Dropdown from "react-bootstrap/Dropdown";
+import { BsPersonCircle } from "react-icons/bs";
 
 function NavBar() {
-  const [searchInput, setSearchInput] = useState("");
+  const [searchInput, setSearchInput] = useState(""); //Estado para el buscador
   const [categoryToggle, setCategoryToggle] = useState("categorias");
 
   const dispatch = useDispatch();
@@ -21,13 +22,14 @@ function NavBar() {
   const user = useSelector((state) => state.user);
 
   const handleSearchClick = (e) => {
+    //escribo mi locacion
     setSearchInput(e.target.value);
-    //tigres
   }; //Esta funcion manejadora lo que hace es que al pasarla por un evento onChange, que esta en mi barra de busqueda, cambia el valor ingresado por el usuario por medio de la propiedad value y con el setsearchInput setea el estado inicial de searchInput quien luego va ser utilizada en el accion(getLocation).
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
     dispatch(getLocation(searchInput));
+    dispatch(getCategories(""));
   }; //Esta funcion es enviado por el evento onsubmit en mi form que es la barra de busqueda, enviando con el dispatch la accion (getLocation) y el estado actual de searchInput que ya fue anteriormente setada por setsearchInput para de esta manera actualizar el estado en la store.
 
   const handleClick = (state) => {
@@ -36,14 +38,16 @@ function NavBar() {
   }; //con el dispatch envio la accion seteada al reducer y asi cambiar el estado estado inicial, esta funcion handleClick la llamo en los links de venta y alquiler en el evento onclik ahi paso por argumento la palabra que quiero que me setee mi action("alquiler", "venta").
 
   const handleClickFilter = () => {
-    dispatch(getCategories(""));
-    dispatch(getLocation(""));
-    setSearchInput("");
-    setCategoryToggle("Categorias");
+    //boton limpiar
+    dispatch(getCategories("")); //seteo categorias
+    dispatch(getLocation("")); //seteo locacion
+    setSearchInput(""); //seteo mi buscador
+    setCategoryToggle("Categorias"); //seteo mi estado del boton limpiar
   };
 
   const handleClickCategories = (category) => {
-    dispatch(getCategories(category));
+    dispatch(getCategories(category)); //Aqui traigo mis categorias(alquiler, casa, ph, terreno)
+    dispatch(getLocation(""));
     setCategoryToggle(category);
     setSearchInput("");
   };
@@ -63,10 +67,11 @@ function NavBar() {
     <div style={{ height: "120px", width: "100vw" }}>
       {user.is_admin ? (
         <Navbar expand="lg" className="navbar-admin">
-          <Navbar.Brand
-            href="#home"
-            className="mr-auto custom-svg-container"
-          ></Navbar.Brand>
+          <Navbar.Brand href="#home" className="mr-auto custom-svg-container">
+            <Link to={"/"}>
+              <Image src="Group177.svg" alt="Logo" className="logo-image" />
+            </Link>
+          </Navbar.Brand>
           <Form inline onSubmit={handleSubmitClick}>
             <FormControl
               value={searchInput}
@@ -105,8 +110,11 @@ function NavBar() {
       ) : (
         <Navbar expand="lg" className="custom-navbar me-auto my-2 my-lg-0">
           <Navbar.Brand href="#home" className="mr-auto custom-svg-container">
-            <Image src="Group177.svg" alt="Logo" className="logo-image" />
+            <Link to={"/"}>
+              <Image src="Group177.svg" alt="Logo" className="logo-image" />
+            </Link>
           </Navbar.Brand>
+
           <Dropdown>
             <Dropdown.Toggle
               style={{
@@ -171,7 +179,7 @@ function NavBar() {
               }}
               type="submit"
             >
-              Search
+              Buscar
             </Button>
           </Form>
 
@@ -202,22 +210,26 @@ function NavBar() {
               <Nav.Link className="navbar-link" href="#favoritos">
                 Favoritos
               </Nav.Link>
-              <Nav.Link className="navbar-link" href="edit-user">
-                Mi perfil
-              </Nav.Link>
             </Nav>
             {user.email ? (
-              <Form inline className="ml-auto">
-                <Link to="/logout">
-                  <Button
-                    variant="outline-Info rounded-pill"
-                    className="btn-logout"
-                    onClick={handleLogout}
-                  >
-                    Cerrar sesión
-                  </Button>
-                </Link>
-              </Form>
+              <>
+                <Nav.Link className="navbar-link" href="edit-user">
+                  <BsPersonCircle className="icono-perfil" />
+                  {user.name}
+                </Nav.Link>
+
+                <Form inline className="ml-auto">
+                  <Link to="/logout">
+                    <Button
+                      variant="outline-Info rounded-pill"
+                      className="btn-logout"
+                      onClick={handleLogout}
+                    >
+                      Cerrar sesión
+                    </Button>
+                  </Link>
+                </Form>
+              </>
             ) : (
               <Form inline className="ml-auto">
                 <h3> {user.name}</h3>

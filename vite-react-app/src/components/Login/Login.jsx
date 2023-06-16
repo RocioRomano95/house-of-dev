@@ -43,7 +43,6 @@ function Login() {
         Swal.fire({
           text: "Usuario o contraseña incorrecta",
           icon: "error",
-          confirmButtonText: "Aceptar",
         });
         console.log(error);
       });

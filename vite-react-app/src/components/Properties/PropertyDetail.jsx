@@ -206,14 +206,11 @@ const PropertyDetail = () => {
               <Col xs={8} md={2} />
               <Col xs={1} md={4}>
                 <Button className="rounded-circle btn-circle">
-                  <CiHeart />{" "}
-                </Button>{" "}
+                  <CiHeart />
+                </Button>
               </Col>
               <Col xs={8} md={4}>
-                {" "}
-                <Button className="rounded btn-circle ">
-                  Agendar cita
-                </Button>{" "}
+                <Button className="rounded btn-circle ">Agendar cita</Button>
               </Col>
               <Col xs={8} md={4} />
             </Row>
