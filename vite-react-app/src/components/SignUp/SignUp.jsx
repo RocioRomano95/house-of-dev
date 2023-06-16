@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 
 export default function SignUp() {
   const name = useInput();
-  const lastName = useInput();
+  const lastname = useInput();
   const password = useInput();
   const phone = useInput();
   const email = useInput();
@@ -24,7 +24,7 @@ export default function SignUp() {
         `${axiosURL}/api/users/signup`,
         {
           name: name.value,
-          lastName: lastName.value,
+          lastname: lastname.value,
           password: password.value,
           phone: phone.value,
           email: email.value,

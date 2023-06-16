@@ -11,7 +11,7 @@ const initialState = {
   email: null,
   phone: null,
   image: null,
-  is_Admin: false,
+  is_admin: false,
 };
 
 const userReducer = createReducer(initialState, {
