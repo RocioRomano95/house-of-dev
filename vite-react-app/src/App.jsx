@@ -12,7 +12,6 @@ import PropertyDetail from "./components/Properties/PropertyDetail";
 import CreateProperty from "./components/CreateProperty";
 import EditUser from "./components/User/EditUser";
 
-
 function App() {
   const dispatch = useDispatch();
 
@@ -30,8 +29,14 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/property/:id" element={<PropertyDetail />} />
-        <Route path="/create-property" element={<CreateProperty />} />
-        <Route path="/edit-user" element={<EditUser/>} />
+        <Route
+          path="/create-property"
+          element={
+            user.is_admin ? <CreateProperty /> : <div>No tienes permisos </div>
+          }
+        />
+
+        <Route path="/edit-user" element={<EditUser />} />
       </Routes>
     </>
   );
