@@ -29,12 +29,12 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/property/:id" element={<PropertyDetail />} />
-        <Route
-          path="/create-property"
-          element={
-            user.is_admin ? <CreateProperty /> : <div>No tienes permisos </div>
-          }
-        />
+        <Route path="/create-property" element={<CreateProperty />} />
+        {user.is_admin ? (
+          <Route path="/create-property" element={<CreateProperty />} />
+        ) : (
+          <div>No tienes permisos </div>
+        )}
 
         <Route path="/edit-user" element={<EditUser />} />
       </Routes>
