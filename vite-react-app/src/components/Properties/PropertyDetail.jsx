@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import { Button } from "react-bootstrap";
 import "./index.css";
 import { CiHeart } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 const PropertyDetail = () => {
   const [property, setProperty] = useState({});
@@ -208,10 +209,11 @@ const PropertyDetail = () => {
                 <Button className="rounded-circle btn-circle">
                   <CiHeart />
                 </Button>
+                <Link to={`/create-visit/${property.id}`}>
+                  <Button className="">agendar cita</Button>
+                </Link>
               </Col>
-              <Col xs={8} md={4}>
-                <Button className="rounded btn-circle ">Agendar cita</Button>
-              </Col>
+              <Col xs={8} md={4}></Col>
               <Col xs={8} md={4} />
             </Row>
           </Col>
