@@ -1,0 +1,11 @@
+.card-visit {
+  background: #fe400523;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+  border: 1px solid black;
+}
+
+card-text {
+  width: 50%;
+}

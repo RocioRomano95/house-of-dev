@@ -68,7 +68,7 @@ function NavBar() {
       {user.is_admin ? (
         <Navbar expand="lg" className="navbar-admin">
           <Navbar.Brand href="#home" className="mr-auto custom-svg-container">
-            <Link to={"/"}>
+            <Link to={"/accept-visit"}>
               <Image src="Group177.svg" alt="Logo" className="logo-image" />
             </Link>
           </Navbar.Brand>
@@ -82,30 +82,28 @@ function NavBar() {
             />
           </Form>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="m-auto">
-              <Nav.Link className="navbar-link" href="">
-                Propiedades
-              </Nav.Link>
-              <Nav.Link className="navbar-link" href="">
-                Mis citas
-              </Nav.Link>
-              <Nav.Link className="navbar-link" href="">
-                Historial de citas
-              </Nav.Link>
-            </Nav>
-            <Form inline className="ml-auto">
-              <Link to="/logout">
-                <Button
-                  variant="outline-Info rounded-pill"
-                  className="btn-logout"
-                  onClick={handleLogout}
-                >
-                  Cerrar sesión
-                </Button>
-              </Link>
-            </Form>
-          </Navbar.Collapse>
+          <Nav className="m-auto">
+            <Nav.Link className="navbar-link" href="">
+              Propiedades
+            </Nav.Link>
+            <Link to={"/accept-visit"}>
+              <Nav.Link className="navbar-link">soy la cita</Nav.Link>
+            </Link>
+            <Nav.Link className="navbar-link" href="">
+              Historial de citas
+            </Nav.Link>
+          </Nav>
+          <Form inline className="ml-auto">
+            <Link to="/logout">
+              <Button
+                variant="outline-Info rounded-pill"
+                className="btn-logout"
+                onClick={handleLogout}
+              >
+                Cerrar sesión
+              </Button>
+            </Link>
+          </Form>
         </Navbar>
       ) : (
         <Navbar expand="lg" className="custom-navbar me-auto my-2 my-lg-0">
