@@ -68,56 +68,64 @@ const AcceptVisit = () => {
     <Container>
       <Row>
         <div>
-          <Link>
-            <Button onClick={() => setShowHistory(false)}>
+          <div className="d-flex justify-content-end">
+            <Link
+              style={{ textDecoration: "none", margin: "10px" }}
+              onClick={() => setShowHistory(false)}
+            >
               Solicitud de citas
-            </Button>
-          </Link>
-          <Link>
-            <Button onClick={() => setShowHistory(true)}>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", margin: "10px" }}
+              onClick={() => setShowHistory(true)}
+            >
               Historial de citas
-            </Button>
-          </Link>
+            </Link>
+          </div>
           {visits.filter(filterVisits).map((visit, index) => {
             return (
-              <Col key={visit.id}>
-                {" "}
-                {/* Agregué una clave única a la etiqueta Col */}
-                {visit.is_booked ? (
-                  <Card.Text>Visita aceptada</Card.Text>
-                ) : (
-                  <>
-                    <Card.Text>Visita por aceptar</Card.Text>
-                    <Button
-                      onClick={() => handleAccept(visit.id, index)}
-                      type="submit"
-                    >
-                      accept
-                    </Button>
-                  </>
-                )}
-                <Card className="card-visit">
-                  <Card.Text className="card-text">
-                    <Card.Text>{visit.property.state}</Card.Text>
-                    <Card.Text>{visit.property.locality}</Card.Text>
-                    <Card.Text>{visit.property.address}</Card.Text>
-                    <Card.Text>{visit.property.description}</Card.Text>
-                  </Card.Text>
+              <Card className="card-visit">
+                <Card.Text className="card-text">
+                  <Card.Title>Datos de propiedad</Card.Title>
+
+                  <Card.Text>{visit.property.state}</Card.Text>
+                  <Card.Text>{visit.property.locality}</Card.Text>
+                  <Card.Text>{visit.property.address}</Card.Text>
+                  <Card.Text>{visit.property.description}</Card.Text>
+                </Card.Text>
+
+                <Card.Text>
+                  <Card.Title>Datos de Usuario</Card.Title>
 
                   <Card.Text>
-                    <Card.Text>
-                      {visit.user.name}
-                      {visit.user.lastname}
-                    </Card.Text>
-                    <Card.Text>{visit.user.phone}</Card.Text>
-                    <Card.Text>{visit.user.email}</Card.Text>
+                    {visit.user.name}
+                    {visit.user.lastname}
                   </Card.Text>
-                  <Card.Text>
-                    <Card.Text>{visit.hour}</Card.Text>
-                    <Card.Text>{visit.date}</Card.Text>
-                  </Card.Text>
-                </Card>
-              </Col>
+                  <Card.Text>{visit.user.phone}</Card.Text>
+                  <Card.Text>{visit.user.email}</Card.Text>
+                </Card.Text>
+                <Card.Text>
+                  <Card.Text>{visit.hour}</Card.Text>
+                  <Card.Text>{visit.date}</Card.Text>
+                </Card.Text>
+                <Col key={visit.id}>
+                  {visit.is_booked ? (
+                    <Card.Text>Visita aceptada</Card.Text>
+                  ) : (
+                    <>
+                      <Card.Text>Visita por aceptar</Card.Text>
+                      <Button
+                        variant="outline-primary"
+                        onClick={() => handleAccept(visit.id, index)}
+                        type="submit"
+                        style={{ borderRadius: "25px" }}
+                      >
+                        accept
+                      </Button>
+                    </>
+                  )}
+                </Col>
+              </Card>
             );
           })}
         </div>

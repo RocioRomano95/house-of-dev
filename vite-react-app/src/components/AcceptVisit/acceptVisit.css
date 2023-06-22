@@ -1,11 +1,9 @@
 .card-visit {
-  background: #fe400523;
   width: 100%;
+  margin: 10px;
+  padding: 10px;
   display: grid;
-  grid-template-columns: 40% 40% 20%;
-  border: 1px solid black;
-}
-
-card-text {
-  width: 50%;
+  grid-template-columns: 40% 30% 20% 10%;
+  border: 1px solid#123ac8;
+  font-size: 1em;
 }
