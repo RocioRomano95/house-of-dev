@@ -12,6 +12,7 @@ import { getLocation } from "../../state/location";
 import { getCategories } from "../../state/categories";
 import Dropdown from "react-bootstrap/Dropdown";
 import { BsPersonCircle } from "react-icons/bs";
+import UserVisits from "../User/UserVisits";
 
 function NavBar() {
   const [searchInput, setSearchInput] = useState(""); //Estado para el buscador
@@ -127,7 +128,6 @@ function NavBar() {
             >
               {categoryToggle}
             </Dropdown.Toggle>
-
             <Dropdown.Menu>
               <Dropdown.Item
                 onClick={() => handleClickCategories("departamento")}
@@ -182,7 +182,6 @@ function NavBar() {
               Buscar
             </Button>
           </Form>
-
           <Button
             style={{
               background: "#ffffff",
@@ -204,12 +203,10 @@ function NavBar() {
               <Nav.Link className="navbar-link">
                 <p onClick={() => handleClick("venta")}> En venta</p>
               </Nav.Link>
-              <Nav.Link className="navbar-link" href="#citas">
-                Mis citas
+              <Nav.Link className="navbar-link">
+                <Link to={`/user-visits`}>Mis citas</Link>
               </Nav.Link>
-              <Nav.Link className="navbar-link" href="#favoritos">
-                Favoritos
-              </Nav.Link>
+              <Nav.Link className="navbar-link">Favoritos</Nav.Link>
             </Nav>
             {user.email ? (
               <>
