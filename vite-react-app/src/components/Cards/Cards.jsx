@@ -134,7 +134,7 @@ function Cards() {
                       </Button>
                       <Link to={`/property/${house.id}`}>
                         <Button
-                          variant="outline-info"
+                          variant="outline-primary"
                           size="md"
                           type="submit"
                           style={{ borderRadius: "25px" }}
