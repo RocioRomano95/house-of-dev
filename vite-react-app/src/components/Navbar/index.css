@@ -1,10 +1,10 @@
-.navbar {
-  background-color: #fe4236;
-}
 .custom-svg-container {
   margin: 30px;
   padding: 20px;
 }
+
+/* "custom-navbar me-auto my-2 my-lg-0" */
+
 .custom-input {
   border-color: white;
 }
@@ -40,20 +40,29 @@
 }
 .custom-navbar {
   background-color: #fe4236;
-  height: 80px;
+  height: auto;
 }
 
-.navbar-link a {
+.navbar-link {
   color: white;
 }
 
 .navbar-admin {
   background-color: #123ac8;
-  height: 80px;
+  height: auto;
 }
 
 .icono-perfil {
   margin-right: 6px;
   height: 35px;
   width: 35px;
+}
+.dropdown {
+  background: #ffffff;
+  color: #123ac8;
+  margin: 0;
+  border-radius: 0%;
+}
+.join-row {
+  margin: 0;
 }
