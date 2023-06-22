@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { axiosURL } from "../../settings/url";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,12 +21,11 @@ import { getLocation } from "../../state/location";
 import { getCategories } from "../../state/categories";
 import Dropdown from "react-bootstrap/Dropdown";
 import { BsPersonCircle } from "react-icons/bs";
-import UserVisits from "../User/UserVisits";
 
 function NavBar() {
   const [searchInput, setSearchInput] = useState(""); //Estado para el buscador
   const [categoryToggle, setCategoryToggle] = useState("categorias");
-
+  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
@@ -88,60 +87,64 @@ function NavBar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Row xs={3} className="join-row">
-            <Col>
-              <Dropdown>
-                <Dropdown.Toggle
-                  md={4}
-                  className="dropdown"
-                  id="dropdown-basic"
+          {location.pathname === "/user-visits" ? null : (
+            <Row xs={3} className="join-row">
+              <Col>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    md={4}
+                    className="dropdown"
+                    id="dropdown-basic"
+                  >
+                    {categoryToggle}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu md={4}>
+                    <Dropdown.Item
+                      onClick={() => handleClickCategories("departamento")}
+                    >
+                      Departamento
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => handleClickCategories("ph")}>
+                      PH
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => handleClickCategories("casa")}
+                    >
+                      Casa
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => handleClickCategories("terreno")}
+                    >
+                      Terreno
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Col>
+              <Col>
+                <Form
+                  className="d-flex dropdown"
+                  inline
+                  onSubmit={handleSubmitClick}
                 >
-                  {categoryToggle}
-                </Dropdown.Toggle>
-                <Dropdown.Menu md={4}>
-                  <Dropdown.Item
-                    onClick={() => handleClickCategories("departamento")}
-                  >
-                    Departamento
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => handleClickCategories("ph")}>
-                    PH
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => handleClickCategories("casa")}>
-                    Casa
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => handleClickCategories("terreno")}
-                  >
-                    Terreno
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Col>
-            <Col>
-              <Form
-                className="d-flex dropdown"
-                inline
-                onSubmit={handleSubmitClick}
-              >
-                <FormControl
-                  value={searchInput}
-                  type="text"
-                  placeholder="Indique la zona"
-                  className="dropdown"
-                  onChange={handleSearchClick}
-                />
-                <Button className="dropdown" type="submit">
-                  Buscar
+                  <FormControl
+                    value={searchInput}
+                    type="text"
+                    placeholder="Indique la zona"
+                    className="dropdown"
+                    onChange={handleSearchClick}
+                  />
+                  <Button className="dropdown" type="submit">
+                    Buscar
+                  </Button>
+                </Form>
+              </Col>
+              <Col>
+                <Button className="dropdown" onClick={handleClickFilter}>
+                  Limpiar
                 </Button>
-              </Form>
-            </Col>
-            <Col>
-              <Button className="dropdown" onClick={handleClickFilter}>
-                Limpiar
-              </Button>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+          )}
 
           <Nav className="m-auto">
             <Nav.Link className="navbar-link">
@@ -150,21 +153,23 @@ function NavBar() {
             <Nav.Link className="navbar-link">
               <p onClick={() => handleClick("venta")}> En venta</p>
             </Nav.Link>
-            {user.email ? (
-              <>
-                <Nav.Link
-                  className="navbar-link"
-                  href={user.is_admin ? "/accept-visit" : "/user-visits"}
-                >
-                  Citas
-                </Nav.Link>
-                <Nav.Link className="navbar-link" href="#favoritos">
-                  Favoritos
-                </Nav.Link>
-              </>
-            ) : (
-              <></>
-            )}
+
+            <Nav.Link
+              className="navbar-link"
+              href={
+                user.email
+                  ? user.is_admin
+                    ? "/accept-visit"
+                    : "/user-visits"
+                  : "/login"
+              }
+            >
+              Citas
+            </Nav.Link>
+
+            <Nav.Link className="navbar-link" href="#favoritos">
+              Favoritos
+            </Nav.Link>
           </Nav>
           {user.email ? (
             <>
