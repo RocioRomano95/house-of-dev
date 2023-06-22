@@ -16,10 +16,8 @@ function Cards() {
   const [properties, setProperties] = useState([]);
   const user = useSelector((state) => state.user);
   const state = useSelector((state) => state.properties);
-  const location = useSelector((state) => state.location);
-  const category = useSelector((state) => state.categories);
-  console.log("STATE", state);
-  console.log("CATEGORIAS", category);
+  let location = useSelector((state) => state.location);
+  let category = useSelector((state) => state.categories);
 
   const handleDelete = (id) => {
     axios
@@ -43,26 +41,24 @@ function Cards() {
         .then((propiedades) => {
           const filterByState = propiedades.data.filter((house) => {
             return house.state == state; //venta o alquiler;
-            //ahora necesito category y location
           });
-          console.log("PROPIEDADES", propiedades.data);
+
           setProperties(filterByState);
         })
         .catch((err) => console.log(err));
     }
-    if (location) {
+    if (location || category) {
+      if (!category) {
+        category = "1";
+      }
+      if (!location) {
+        location = "1";
+      }
       axios
-        .get(`${axiosURL}/api/properties//search/${location}/${state}`)
+        .get(
+          `${axiosURL}/api/properties//search/${location}/${state}/${category}`
+        )
         .then((properties) => {
-          console.log("Properties location", properties.data);
-          setProperties(properties.data);
-        });
-    }
-    if (category) {
-      axios
-        .get(`${axiosURL}/api/properties/filter-category/${category}/${state}`)
-        .then((properties) => {
-          console.log("Properties location", properties.data);
           setProperties(properties.data);
         });
     }
