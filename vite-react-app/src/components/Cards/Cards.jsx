@@ -10,6 +10,10 @@ import Button from "react-bootstrap/Button";
 import "./index.css";
 import { useSelector } from "react-redux";
 import { CiHeart } from "react-icons/ci";
+import { getSelectProperty } from "../../state/selectProperty";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+
 
 function Cards() {
   const [refreshDelete, setRefreshDelete] = useState(true);
@@ -18,6 +22,9 @@ function Cards() {
   const state = useSelector((state) => state.properties);
   let location = useSelector((state) => state.location);
   let category = useSelector((state) => state.categories);
+  console.log("STATE", state);
+  console.log("CATEGORIAS", category);
+   
 
   const handleDelete = (id) => {
     axios
@@ -66,34 +73,15 @@ function Cards() {
 
   return (
     <Container>
-      <Row>
+      <Row xs={1} md={2}>
         {properties.map((house) => {
           return (
-            <Card className="m-2" style={{ width: "50%", borderRadius: 0 }}>
+            <Card style={{ borderRadius: 0 }}>
               <Row>
                 <Col md={4}>
                   <Row>
                     <Card.Img src={house.image} />
                   </Row>
-                  {user.is_admin ? (
-                    <Row>
-                      <Col md={5}>
-                        <Button style={{ borderRadius: "25px" }}>Editar</Button>
-                      </Col>
-                      <Col md={5}>
-                        <Button
-                          onClick={() => {
-                            handleDelete(house.id);
-                          }}
-                          style={{ borderRadius: "25px" }}
-                        >
-                          Eliminar
-                        </Button>
-                      </Col>
-                    </Row>
-                  ) : (
-                    <></>
-                  )}
                 </Col>
 
                 <Col md={8}>
@@ -124,21 +112,60 @@ function Cards() {
                   </Row>
 
                   <Row>
-                    <Col className="border border-info p-3 d-flex justify-content-end">
-                      <Button className="rounded-circle btn-circle">
-                        <CiHeart />
-                      </Button>
-                      <Link to={`/property/${house.id}`}>
-                        <Button
-                          variant="outline-primary"
-                          size="md"
-                          type="submit"
-                          style={{ borderRadius: "25px" }}
-                        >
-                          ver más
+                    {user.is_admin ? (
+                      <Row>
+                        <Col md={5}>
+                          <Button
+                            onClick={() => {
+                              handleEdit(house);
+                            }}
+                       
+                            style={{
+                              borderRadius: "25px",
+                              marginTop: "10px",
+                              marginRight: "5px",
+                              marginBottom: "10px",
+                              marginLeft: "5px",
+                            }}
+                          >
+                            Editar
+                          </Button>
+
+                        </Col>
+                        <Col md={5}>
+                          <Button
+                            onClick={() => {
+                              handleDelete(house.id);
+                            }}
+                            style={{
+                              borderRadius: "25px",
+                              marginTop: "10px",
+                              marginRight: "5px",
+                              marginBottom: "10px",
+                              marginLeft: "5px",
+                            }}
+                          >
+                            Eliminar
+                          </Button>
+                        </Col>
+                      </Row>
+                    ) : (
+                      <Col className="border border-info p-3 d-flex justify-content-end">
+                        <Button className="rounded-circle btn-circle">
+                          <CiHeart />
                         </Button>
-                      </Link>
-                    </Col>
+                        <Link to={`/property/${house.id}`}>
+                          <Button
+                            variant="outline-info"
+                            size="md"
+                            type="submit"
+                            style={{ borderRadius: "25px" }}
+                          >
+                            ver más
+                          </Button>
+                        </Link>
+                      </Col>
+                    )}
                   </Row>
                 </Col>
               </Row>
