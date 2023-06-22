@@ -6,7 +6,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import NavBar from "../Navbar/NavBar.jsx";
+import NavBar from "../Navbar/NavBar";
 import Container from "react-bootstrap/Container";
 import Footer from "../Footer/Footer";
 import { Button } from "react-bootstrap";
@@ -213,7 +213,18 @@ const PropertyDetail = () => {
                   <Button className="">agendar cita</Button>
                 </Link>
               </Col>
-              <Col xs={8} md={4}></Col>
+
+              <Col xs={8} md={4}>
+                <Button
+                  variant="outline-primary"
+                  size="md"
+                  type="submit"
+                  style={{ borderRadius: "25px" }}
+                >
+                  Agendar cita
+                </Button>
+              </Col>
+
               <Col xs={8} md={4} />
             </Row>
           </Col>
