@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Navbar, Nav, Form, FormControl, Button, Image } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+  Image,
+  Col,
+  Row,
+} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -65,185 +74,131 @@ function NavBar() {
   };
   return (
     <div style={{ height: "120px", width: "100vw" }}>
-      {user.is_admin ? (
-        <Navbar expand="lg" className="navbar-admin">
-          <Navbar.Brand href="#home" className="mr-auto custom-svg-container">
-            <Link to={"/accept-visit"}>
-              <Image src="Group177.svg" alt="Logo" className="logo-image" />
-            </Link>
-          </Navbar.Brand>
-          <Form inline onSubmit={handleSubmitClick}>
-            <FormControl
-              value={searchInput}
-              type="text"
-              placeholder="Buscar"
-              className={`mr-sm-2 rounded-pill custom-input`}
-              onChange={handleSearchClick}
-            />
-          </Form>
+      <Navbar
+        expand="lg"
+        className={user.is_admin ? "navbar-admin" : "custom-navbar"}
+      >
+        {" "}
+        {}
+        <Navbar.Brand>
+          <Link to={"/"}>
+            <Image src="Group177.svg" alt="Logo" className="logo-image" />
+          </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Nav className="m-auto">
-            <Nav.Link className="navbar-link" href="">
-              Propiedades
-            </Nav.Link>
-            <Link to={"/accept-visit"}>
-              <Nav.Link className="navbar-link">soy la cita</Nav.Link>
-            </Link>
-            <Nav.Link className="navbar-link" href="">
-              Historial de citas
-            </Nav.Link>
-          </Nav>
-          <Form inline className="ml-auto">
-            <Link to="/logout">
-              <Button
-                variant="outline-Info rounded-pill"
-                className="btn-logout"
-                onClick={handleLogout}
+        </Navbar.Brand>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Row xs={3} className="join-row">
+            <Col>
+              <Dropdown>
+                <Dropdown.Toggle
+                  md={4}
+                  className="dropdown"
+                  id="dropdown-basic"
+                >
+                  {categoryToggle}
+                </Dropdown.Toggle>
+                <Dropdown.Menu md={4}>
+                  <Dropdown.Item
+                    onClick={() => handleClickCategories("departamento")}
+                  >
+                    Departamento
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleClickCategories("ph")}>
+                    PH
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleClickCategories("casa")}>
+                    Casa
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => handleClickCategories("terreno")}
+                  >
+                    Terreno
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Col>
+            <Col>
+              <Form
+                className="d-flex dropdown"
+                inline
+                onSubmit={handleSubmitClick}
               >
-                Cerrar sesión
+                <FormControl
+                  value={searchInput}
+                  type="text"
+                  placeholder="Indique la zona"
+                  className="dropdown"
+                  onChange={handleSearchClick}
+                />
+                <Button className="dropdown" type="submit">
+                  Buscar
+                </Button>
+              </Form>
+            </Col>
+            <Col>
+              <Button className="dropdown" onClick={handleClickFilter}>
+                Limpiar
               </Button>
-            </Link>
-          </Form>
-        </Navbar>
-      ) : (
-        <Navbar expand="lg" className="custom-navbar me-auto my-2 my-lg-0">
-          <Navbar.Brand href="#home" className="mr-auto custom-svg-container">
-            <Link to={"/"}>
-              <Image src="Group177.svg" alt="Logo" className="logo-image" />
-            </Link>
-          </Navbar.Brand>
+            </Col>
+          </Row>
 
-          <Dropdown>
-            <Dropdown.Toggle
-              style={{
-                background: "#ffffff",
-                color: "#212836",
-                margin: 0,
-                borderRadius: 0,
-              }}
-              id="dropdown-basic"
-            >
-              {categoryToggle}
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item
-                onClick={() => handleClickCategories("departamento")}
-              >
-                Departamento
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => handleClickCategories("ph")}>
-                PH
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => handleClickCategories("casa")}>
-                Casa
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => handleClickCategories("terreno")}>
-                Terreno
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Form
-            style={{
-              background: "#ffffff",
-              color: "#212836",
-              margin: 0,
-              borderRadius: 0,
-              border: "1px solid #0d6efd",
-            }}
-            className="d-flex"
-            inline
-            onSubmit={handleSubmitClick}
-          >
-            <FormControl
-              style={{
-                background: "#ffffff",
-                color: "#212836",
-                margin: 0,
-                borderRadius: 0,
-              }}
-              value={searchInput}
-              type="text"
-              placeholder="Indique la zona"
-              className={`mr-sm-2 custom-input`}
-              onChange={handleSearchClick}
-            />
-            <Button
-              style={{
-                background: "#ffffff",
-                color: "#212836",
-                margin: 0,
-                borderRadius: 0,
-              }}
-              type="submit"
-            >
-              Buscar
-            </Button>
-          </Form>
-
-          <Button
-            style={{
-              background: "#ffffff",
-              color: "#212836",
-              margin: 0,
-              borderRadius: 0,
-            }}
-            onClick={handleClickFilter}
-          >
-            Limpiar
-          </Button>
-
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="m-auto">
-              <Nav.Link className="navbar-link">
-                <p onClick={() => handleClick("alquiler")}>Alquiler</p>
-              </Nav.Link>
-              <Nav.Link className="navbar-link">
-                <p onClick={() => handleClick("venta")}> En venta</p>
-              </Nav.Link>
-              <Nav.Link className="navbar-link" href="#citas">
-                Mis citas
-              </Nav.Link>
-              <Nav.Link className="navbar-link" href="#favoritos">
-                Favoritos
-              </Nav.Link>
-            </Nav>
+          <Nav className="m-auto">
+            <Nav.Link className="navbar-link">
+              <p onClick={() => handleClick("alquiler")}>Alquiler</p>
+            </Nav.Link>
+            <Nav.Link className="navbar-link">
+              <p onClick={() => handleClick("venta")}> En venta</p>
+            </Nav.Link>
             {user.email ? (
               <>
-                <Nav.Link className="navbar-link" href="edit-user">
-                  <BsPersonCircle className="icono-perfil" />
-                  {user.name}
+                <Nav.Link
+                  className="navbar-link"
+                  href={user.is_admin ? "/accept-visit" : "/user-visits"}
+                >
+                  Citas
                 </Nav.Link>
-
-                <Form inline className="ml-auto">
-                  <Link to="/logout">
-                    <Button
-                      variant="outline-Info rounded-pill"
-                      className="btn-logout"
-                      onClick={handleLogout}
-                    >
-                      Cerrar sesión
-                    </Button>
-                  </Link>
-                </Form>
+                <Nav.Link className="navbar-link" href="#favoritos">
+                  Favoritos
+                </Nav.Link>
               </>
             ) : (
+              <></>
+            )}
+          </Nav>
+          {user.email ? (
+            <>
+              <Nav.Link className="navbar-link" href="edit-user">
+                <BsPersonCircle className="icono-perfil" />
+                {user.name}
+              </Nav.Link>
+
               <Form inline className="ml-auto">
-                <h3> {user.name}</h3>
-                <Link to="/login">
+                <Link to="/logout">
                   <Button
                     variant="outline-Info rounded-pill"
-                    className="btn-login"
+                    className=""
+                    onClick={handleLogout}
                   >
-                    Iniciar sesión
+                    Cerrar sesión
                   </Button>
                 </Link>
               </Form>
-            )}
-          </Navbar.Collapse>
-        </Navbar>
-      )}
+            </>
+          ) : (
+            <Form inline className="ml-auto">
+              <h3> {user.name}</h3>
+              <Link to="/login">
+                <Button
+                  variant="outline-Info rounded-pill"
+                  className="btn-login"
+                >
+                  Iniciar sesión
+                </Button>
+              </Link>
+            </Form>
+          )}
+        </Navbar.Collapse>
+      </Navbar>
     </div>
   );
 }
