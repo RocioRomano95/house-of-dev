@@ -78,8 +78,6 @@ function NavBar() {
         expand="md"
         className={user.is_admin ? "navbar-admin" : "custom-navbar"}
       >
-        {" "}
-        {}
         <Navbar.Brand>
           <Link to={"/"}>
             <Image src="Group177.svg" alt="Logo" className="logo-image" />
@@ -88,62 +86,56 @@ function NavBar() {
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           {location.pathname === "/user-visits" ? null : (
-            <Row xs={3} className="join-row">
-              <Col>
-                <Dropdown>
-                  <Dropdown.Toggle
-                    md={4}
-                    className="dropdown"
-                    id="dropdown-basic"
-                  >
-                    {categoryToggle}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu md={4}>
-                    <Dropdown.Item
-                      onClick={() => handleClickCategories("departamento")}
-                    >
-                      Departamento
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleClickCategories("ph")}>
-                      PH
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => handleClickCategories("casa")}
-                    >
-                      Casa
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => handleClickCategories("terreno")}
-                    >
-                      Terreno
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Col>
-              <Col>
-                <Form
-                  className="d-flex dropdown"
-                  inline
-                  onSubmit={handleSubmitClick}
+            <>
+              <Dropdown>
+                <Dropdown.Toggle
+                  md={4}
+                  className="dropdown"
+                  id="dropdown-basic"
                 >
-                  <FormControl
-                    value={searchInput}
-                    type="text"
-                    placeholder="Indique la zona"
-                    className="dropdown"
-                    onChange={handleSearchClick}
-                  />
-                  <Button className="dropdown" type="submit">
-                    Buscar
-                  </Button>
-                </Form>
-              </Col>
-              <Col>
-                <Button className="dropdown" onClick={handleClickFilter}>
-                  Limpiar
+                  {categoryToggle}
+                </Dropdown.Toggle>
+                <Dropdown.Menu md={4}>
+                  <Dropdown.Item
+                    onClick={() => handleClickCategories("departamento")}
+                  >
+                    Departamento
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleClickCategories("ph")}>
+                    PH
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleClickCategories("casa")}>
+                    Casa
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => handleClickCategories("terreno")}
+                  >
+                    Terreno
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Form
+                className="d-flex dropdown"
+                inline
+                onSubmit={handleSubmitClick}
+              >
+                <FormControl
+                  value={searchInput}
+                  type="text"
+                  placeholder="Indique la zona"
+                  className="dropdown"
+                  onChange={handleSearchClick}
+                />
+                <Button className="dropdown" type="submit">
+                  Buscar
                 </Button>
-              </Col>
-            </Row>
+              </Form>
+
+              <Button className="dropdown" onClick={handleClickFilter}>
+                Limpiar
+              </Button>
+            </>
           )}
 
           <Nav className="m-auto">
