@@ -1,21 +1,21 @@
-.navbar {
-  background-color: #fe4236;
-}
 .custom-svg-container {
   margin: 30px;
   padding: 20px;
 }
+
+/* "custom-navbar me-auto my-2 my-lg-0" */
+
 .custom-input {
   border-color: white;
 }
 
 .nav-link {
   color: #f7f3ee;
-  margin-right: 10px;
+  margin: 0 20px 0 10px;
 }
 
 .nav-link:hover {
-  color: #f7f3ee;
+  color: #acc1ff;
 }
 
 .form-control {
@@ -26,34 +26,46 @@
   margin-right: 10px;
 }
 
-.btn-login {
+.btn-loguser {
   background-color: #fe4236;
-  border-color: #fe4236;
+  border-color: #f7f3ee;
   color: white;
-  margin-right: 80px;
+}
+.btn-log-admin {
+  background-color: #123ac8;
+  border-color: #f7f3ee;
+  color: white;
+  font-size: xx-small;
+  margin-right: 30px;
 }
 
-.btn-login {
-  background-color: #fe4236;
-  border-color: white;
-  color: white;
-}
 .custom-navbar {
   background-color: #fe4236;
-  height: 80px;
+  height: auto;
 }
 
-.navbar-link a {
+.navbar-link {
   color: white;
 }
 
 .navbar-admin {
   background-color: #123ac8;
-  height: 80px;
+  height: auto;
+  font-size: small;
 }
 
 .icono-perfil {
   margin-right: 6px;
   height: 35px;
   width: 35px;
+}
+.dropdown {
+  background: #ffffff;
+  color: #123ac8;
+  margin: 0;
+  border-radius: 0%;
+}
+
+.logo-image {
+  margin-left: 20px;
 }

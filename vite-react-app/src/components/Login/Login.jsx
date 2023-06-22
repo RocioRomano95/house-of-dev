@@ -34,7 +34,8 @@ function Login() {
       .then((user) => {
         Swal.fire({
           icon: "success",
-          title: `BIenvenido`,
+          title: `Bienvenido`,
+          showConfirmButton: false,
         });
         dispatch(setLogin(user.data)); //envio la informacion a redux
         navigate("/");
@@ -43,6 +44,10 @@ function Login() {
         Swal.fire({
           text: "Usuario o contraseña incorrecta",
           icon: "error",
+          showConfirmButton: false,
+          showCancelButton: true,
+          cancelButtonText: "Aceptar",
+          cancelButtonColor: "#ef233c",
         });
         console.log(error);
       });

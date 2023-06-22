@@ -12,6 +12,7 @@ import PropertyDetail from "./components/Properties/PropertyDetail";
 import CreateProperty from "./components/CreateProperty";
 import EditUser from "./components/User/EditUser";
 import EditProperty from "./components/Properties/EditProperty";
+import UserVisits from "./components/User/UserVisits";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
           }
         />
         <Route path="/edit-property" element={<EditProperty />} />
+        <Route path="/user-visits" element={<UserVisits />} />
         <Route path="/edit-user" element={<EditUser />} />
       </Routes>
     </>

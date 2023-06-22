@@ -84,10 +84,10 @@ function Cards() {
 
   return (
     <Container>
-      <Row>
+      <Row xs={1} md={2}>
         {properties.map((house) => {
           return (
-            <Card className="m-2" style={{ width: "50%", borderRadius: 0 }}>
+            <Card style={{ borderRadius: 0 }}>
               <Row>
                 <Col md={4}>
                   <Row>

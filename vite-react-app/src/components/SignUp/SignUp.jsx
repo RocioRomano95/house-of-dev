@@ -36,6 +36,7 @@ export default function SignUp() {
         Swal.fire({
           icon: "success",
           title: `Tu registro se ha realizado con éxito`,
+          showConfirmButton: false,
         });
         navigate("/login");
       })
@@ -44,6 +45,8 @@ export default function SignUp() {
           Swal.fire({
             icon: "error",
             title: `El email ya se encuentra registrado`,
+            // showCancelButton: false,
+            showConfirmButton: false,
           });
         }
         console.log(error);
