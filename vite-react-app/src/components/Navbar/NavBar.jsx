@@ -87,60 +87,44 @@ function NavBar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
-          <Row xs={3} className="join-row">
-            <Col>
-              <Dropdown>
-                <Dropdown.Toggle
-                  md={4}
-                  className="dropdown"
-                  id="dropdown-basic"
-                >
-                  {categoryToggle}
-                </Dropdown.Toggle>
-                <Dropdown.Menu md={4}>
-                  <Dropdown.Item
-                    onClick={() => handleClickCategories("departamento")}
-                  >
-                    Departamento
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => handleClickCategories("ph")}>
-                    PH
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={() => handleClickCategories("casa")}>
-                    Casa
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() => handleClickCategories("terreno")}
-                  >
-                    Terreno
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Col>
-            <Col>
-              <Form
-                className="d-flex dropdown"
-                inline
-                onSubmit={handleSubmitClick}
+          <Dropdown>
+            <Dropdown.Toggle md={4} className="dropdown" id="dropdown-basic">
+              {categoryToggle}
+            </Dropdown.Toggle>
+            <Dropdown.Menu md={4}>
+              <Dropdown.Item
+                onClick={() => handleClickCategories("departamento")}
               >
-                <FormControl
-                  value={searchInput}
-                  type="text"
-                  placeholder="Indique la zona"
-                  className="dropdown"
-                  onChange={handleSearchClick}
-                />
-                <Button className="dropdown" type="submit">
-                  Buscar
-                </Button>
-              </Form>
-            </Col>
-            <Col>
-              <Button className="dropdown" onClick={handleClickFilter}>
-                Limpiar
-              </Button>
-            </Col>
-          </Row>
+                Departamento
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleClickCategories("ph")}>
+                PH
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleClickCategories("casa")}>
+                Casa
+              </Dropdown.Item>
+              <Dropdown.Item onClick={() => handleClickCategories("terreno")}>
+                Terreno
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+
+          <Form className="d-flex dropdown" inline onSubmit={handleSubmitClick}>
+            <FormControl
+              value={searchInput}
+              type="text"
+              placeholder="Indique la zona"
+              className="dropdown"
+              onChange={handleSearchClick}
+            />
+            <Button className="dropdown" type="submit">
+              Buscar
+            </Button>
+          </Form>
+
+          <Button className="dropdown" onClick={handleClickFilter}>
+            Limpiar
+          </Button>
 
           <Nav className="m-auto">
             <Nav.Link className="navbar-link">
