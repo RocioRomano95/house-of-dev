@@ -14,7 +14,7 @@ function Home() {
       <NavBar />
       {user.is_admin ? (
         <>
-          <Container>
+          <Container className="home">
             <Row className="header-title ">
               <h3
                 className="d-flex justify-content-start "
