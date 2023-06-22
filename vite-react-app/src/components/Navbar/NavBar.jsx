@@ -38,7 +38,6 @@ function NavBar() {
   const handleSubmitClick = (e) => {
     e.preventDefault();
     dispatch(getLocation(searchInput));
-    dispatch(getCategories(""));
   }; //Esta funcion es enviado por el evento onsubmit en mi form que es la barra de busqueda, enviando con el dispatch la accion (getLocation) y el estado actual de searchInput que ya fue anteriormente setada por setsearchInput para de esta manera actualizar el estado en la store.
 
   const handleClick = (state) => {
@@ -56,7 +55,6 @@ function NavBar() {
 
   const handleClickCategories = (category) => {
     dispatch(getCategories(category)); //Aqui traigo mis categorias(alquiler, casa, ph, terreno)
-    dispatch(getLocation(""));
     setCategoryToggle(category);
     setSearchInput("");
   };
@@ -66,7 +64,6 @@ function NavBar() {
     axios
       .get(`${axiosURL}/api/users/logout`, { withCredentials: true })
       .then((res) => {
-        console.log("LOGOUT", res.data);
         dispatch(setLogOut({}));
         navigate("/");
       })
