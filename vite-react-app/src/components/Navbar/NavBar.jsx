@@ -75,11 +75,9 @@ function NavBar() {
   return (
     <div style={{ height: "120px", width: "100vw" }}>
       <Navbar
-        expand="lg"
+        expand="md"
         className={user.is_admin ? "navbar-admin" : "custom-navbar"}
       >
-        {" "}
-        {}
         <Navbar.Brand>
           <Link to={"/"}>
             <Image src="Group177.svg" alt="Logo" className="logo-image" />
@@ -88,62 +86,56 @@ function NavBar() {
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           {location.pathname === "/user-visits" ? null : (
-            <Row xs={3} className="join-row">
-              <Col>
-                <Dropdown>
-                  <Dropdown.Toggle
-                    md={4}
-                    className="dropdown"
-                    id="dropdown-basic"
-                  >
-                    {categoryToggle}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu md={4}>
-                    <Dropdown.Item
-                      onClick={() => handleClickCategories("departamento")}
-                    >
-                      Departamento
-                    </Dropdown.Item>
-                    <Dropdown.Item onClick={() => handleClickCategories("ph")}>
-                      PH
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => handleClickCategories("casa")}
-                    >
-                      Casa
-                    </Dropdown.Item>
-                    <Dropdown.Item
-                      onClick={() => handleClickCategories("terreno")}
-                    >
-                      Terreno
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Col>
-              <Col>
-                <Form
-                  className="d-flex dropdown"
-                  inline
-                  onSubmit={handleSubmitClick}
+            <>
+              <Dropdown>
+                <Dropdown.Toggle
+                  md={4}
+                  className="dropdown"
+                  id="dropdown-basic"
                 >
-                  <FormControl
-                    value={searchInput}
-                    type="text"
-                    placeholder="Indique la zona"
-                    className="dropdown"
-                    onChange={handleSearchClick}
-                  />
-                  <Button className="dropdown" type="submit">
-                    Buscar
-                  </Button>
-                </Form>
-              </Col>
-              <Col>
-                <Button className="dropdown" onClick={handleClickFilter}>
-                  Limpiar
+                  {categoryToggle}
+                </Dropdown.Toggle>
+                <Dropdown.Menu md={4}>
+                  <Dropdown.Item
+                    onClick={() => handleClickCategories("departamento")}
+                  >
+                    Departamento
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleClickCategories("ph")}>
+                    PH
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={() => handleClickCategories("casa")}>
+                    Casa
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => handleClickCategories("terreno")}
+                  >
+                    Terreno
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+              <Form
+                className="d-flex dropdown"
+                inline
+                onSubmit={handleSubmitClick}
+              >
+                <FormControl
+                  value={searchInput}
+                  type="text"
+                  placeholder="Indique la zona"
+                  className="dropdown"
+                  onChange={handleSearchClick}
+                />
+                <Button className="dropdown" type="submit">
+                  Buscar
                 </Button>
-              </Col>
-            </Row>
+              </Form>
+
+              <Button className="dropdown" onClick={handleClickFilter}>
+                Limpiar
+              </Button>
+            </>
           )}
 
           <Nav className="m-auto">
@@ -151,7 +143,7 @@ function NavBar() {
               <p onClick={() => handleClick("alquiler")}>Alquiler</p>
             </Nav.Link>
             <Nav.Link className="navbar-link">
-              <p onClick={() => handleClick("venta")}> En venta</p>
+              <p onClick={() => handleClick("venta")}>Venta</p>
             </Nav.Link>
 
             <Nav.Link
@@ -178,11 +170,11 @@ function NavBar() {
                 {user.name}
               </Nav.Link>
 
-              <Form inline className="ml-auto">
+              <Form inline>
                 <Link to="/logout">
                   <Button
-                    variant="outline-Info rounded-pill"
-                    className=""
+                    variant="nav-link rounded-pill"
+                    className={user.is_admin ? "btn-log-admin" : "btn-login"}
                     onClick={handleLogout}
                   >
                     Cerrar sesión
@@ -194,10 +186,7 @@ function NavBar() {
             <Form inline className="ml-auto">
               <h3> {user.name}</h3>
               <Link to="/login">
-                <Button
-                  variant="outline-Info rounded-pill"
-                  className="btn-login"
-                >
+                <Button variant="nav-link rounded-pill" className="btn-login">
                   Iniciar sesión
                 </Button>
               </Link>
