@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 const PropertyDetail = () => {
   const [property, setProperty] = useState({});
   const { id } = useParams();
+  console.log("PROPIEDADES", property);
 
   const fetchProperties = (id) => {
     axios
@@ -50,21 +51,7 @@ const PropertyDetail = () => {
               <ListGroup.Item
                 style={{ fontFamily: "Montserrat", color: "#123AC8" }}
               >
-                $
-                <span
-                  style={{
-                    fontFamily: "Montserrat",
-                    color: "#123AC8",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {property.price}
-                </span>
-              </ListGroup.Item>
-              <ListGroup.Item
-                style={{ fontFamily: "Montserrat", color: "#123AC8" }}
-              >
-                Descripción:
+                Inmueble:
                 <span
                   style={{
                     fontFamily: "Montserrat",
@@ -73,7 +60,21 @@ const PropertyDetail = () => {
                     marginLeft: "0.5rem",
                   }}
                 >
-                  {property.description}
+                  {property.category.name}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{ fontFamily: "Montserrat", color: "#123AC8" }}
+              >
+                Valor $
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {property.price}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item
@@ -200,6 +201,21 @@ const PropertyDetail = () => {
                   }}
                 >
                   {property.state}
+                </span>
+              </ListGroup.Item>
+              <ListGroup.Item
+                style={{ fontFamily: "Montserrat", color: "#123AC8" }}
+              >
+                Descripción:
+                <span
+                  style={{
+                    fontFamily: "Montserrat",
+                    color: "#123AC8",
+                    fontWeight: "bold",
+                    marginLeft: "0.5rem",
+                  }}
+                >
+                  {property.description}
                 </span>
               </ListGroup.Item>
             </ListGroup>
