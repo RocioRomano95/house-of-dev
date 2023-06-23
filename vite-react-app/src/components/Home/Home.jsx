@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 import "./style.css";
-import Footer from "../Footer/Footer";
 
 function Home() {
   const user = useSelector((state) => state.user);
@@ -50,7 +49,6 @@ function Home() {
         </>
       )}
       <Cards />
-      <Footer />
     </>
   );
 }

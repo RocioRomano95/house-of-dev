@@ -8,7 +8,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import NavBar from "../Navbar/NavBar";
 import Container from "react-bootstrap/Container";
-import Footer from "../Footer/Footer";
 import { Button } from "react-bootstrap";
 import "./index.css";
 import { CiHeart } from "react-icons/ci";
@@ -48,21 +47,6 @@ const PropertyDetail = () => {
           <Col md={1} />
           <Col sm={4}>
             <ListGroup className="my-5 " /* variant="flush" */>
-              <ListGroup.Item
-                style={{ fontFamily: "Montserrat", color: "#123AC8" }}
-              >
-                Inmueble:
-                <span
-                  style={{
-                    fontFamily: "Montserrat",
-                    color: "#123AC8",
-                    fontWeight: "bold",
-                    marginLeft: "0.5rem",
-                  }}
-                >
-                  {property.category.name}
-                </span>
-              </ListGroup.Item>
               <ListGroup.Item
                 style={{ fontFamily: "Montserrat", color: "#123AC8" }}
               >
@@ -220,34 +204,27 @@ const PropertyDetail = () => {
               </ListGroup.Item>
             </ListGroup>
             <Row direction="horizontal">
-              <Col xs={8} md={2} />
               <Col xs={1} md={4}>
                 <Button className="rounded-circle btn-circle">
                   <CiHeart />
                 </Button>
+              </Col>
+              <Col xs={8} md={4}>
                 <Link to={`/create-visit/${property.id}`}>
-                  <Button className="">agendar cita</Button>
+                  <Button
+                    variant="outline-primary"
+                    size="md"
+                    type="submit"
+                    style={{ borderRadius: "25px" }}
+                  >
+                    Agendar cita
+                  </Button>
                 </Link>
               </Col>
-
-              <Col xs={8} md={4}>
-                <Button
-                  variant="outline-primary"
-                  size="md"
-                  type="submit"
-                  style={{ borderRadius: "25px" }}
-                >
-                  Agendar cita
-                </Button>
-              </Col>
-
-              <Col xs={8} md={4} />
             </Row>
           </Col>
         </Row>
       </Container>
-
-      <Footer flex-grow-1 />
     </div>
   );
 };
