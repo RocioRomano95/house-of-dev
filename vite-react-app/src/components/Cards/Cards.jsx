@@ -14,7 +14,6 @@ import { getSelectProperty } from "../../state/selectProperty";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
-
 function Cards() {
   const [refreshDelete, setRefreshDelete] = useState(true);
   const [properties, setProperties] = useState([]);
@@ -24,7 +23,6 @@ function Cards() {
   let category = useSelector((state) => state.categories);
   console.log("STATE", state);
   console.log("CATEGORIAS", category);
-   
 
   const handleDelete = (id) => {
     axios
@@ -119,7 +117,6 @@ function Cards() {
                             onClick={() => {
                               handleEdit(house);
                             }}
-                       
                             style={{
                               borderRadius: "25px",
                               marginTop: "10px",
@@ -130,7 +127,6 @@ function Cards() {
                           >
                             Editar
                           </Button>
-
                         </Col>
                         <Col md={5}>
                           <Button

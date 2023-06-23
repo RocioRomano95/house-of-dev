@@ -11,6 +11,10 @@ import { useEffect } from "react";
 import PropertyDetail from "./components/Properties/PropertyDetail";
 import CreateProperty from "./components/CreateProperty";
 import EditUser from "./components/User/EditUser";
+
+import AddVisits from "./components/AddVisits/AddVisits";
+import AcceptVisit from "./components/AcceptVisit/AcceptVisit";
+
 import EditProperty from "./components/Properties/EditProperty";
 import UserVisits from "./components/User/UserVisits";
 
@@ -31,12 +35,18 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/property/:id" element={<PropertyDetail />} />
-        <Route
-          path="/create-property"
-          element={
-            user.is_admin ? <CreateProperty /> : <div>No tienes permisos </div>
-          }
-        />
+        <Route path="/create-visit/:id" element={<AddVisits />} />
+        <Route path="/accept-visit" element={<AcceptVisit />} />
+        {user.is_admin ? (
+          <Route path="/create-property" element={<CreateProperty />} />
+        ) : (
+          <Route
+            path="/401"
+            render={() => {
+              <div>No tienes permisos </div>;
+            }}
+          ></Route>
+        )}
         <Route path="/edit-property" element={<EditProperty />} />
         <Route path="/user-visits" element={<UserVisits />} />
         <Route path="/edit-user" element={<EditUser />} />

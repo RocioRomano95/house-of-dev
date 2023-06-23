@@ -135,6 +135,7 @@ function NavBar() {
             </>
           )}
 
+
           <Nav className="m-auto">
             <Nav.Link className="navbar-link">
               <p onClick={() => handleClick("alquiler")}>Alquiler</p>
