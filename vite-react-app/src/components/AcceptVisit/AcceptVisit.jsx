@@ -23,7 +23,7 @@ const AcceptVisit = () => {
 
   useEffect(() => {
     fetchAllVisits();
-  }, []);
+  }, [acceptedVisit]);
 
   console.log("VISITS después del fetch", visits);
 
@@ -45,10 +45,10 @@ const AcceptVisit = () => {
       setAcceptedVisit([...acceptedVisit, index]);
 
       // Filtra las visitas para eliminar la visita aceptada de la lista
-      const filteredVisits = visits.filter(
-        (visit, visitIndex) => visitIndex !== index
-      );
-      setVisits(filteredVisits);
+      // const filteredVisits = visits.filter(
+      //   (visit, visitIndex) => visitIndex !== index
+      // );
+      // setVisits(filteredVisits);
     } catch (error) {
       console.log("Error", error);
     }
